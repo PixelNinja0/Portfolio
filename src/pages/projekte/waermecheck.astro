@@ -3,6 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
 
 import mockupHero from '../../assets/images/MockupBuchung.png';
+import imgBug01 from '../../assets/images/gleicher_preis.png';
+import imgBug02 from '../../assets/images/Weiter_button_fehlt.png';
+import imgBug03 from '../../assets/images/doppelte_auswahl.png';
 const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-ab0f098ede5b";
 ---
 
@@ -121,6 +124,7 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
               <button
                 class="bug-overlay-trigger border-t border-border pt-12 flex gap-8 items-center mt-auto w-full text-left hover:opacity-70 transition-opacity"
                 data-bug="01"
+                data-img={imgBug01.src}
               >
                 <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">Fehler anzeigen</span>
                 <span class="text-[12px] text-text-900">→</span>
@@ -133,6 +137,7 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
               <button
                 class="bug-overlay-trigger border-t border-border pt-12 flex gap-8 items-center mt-auto w-full text-left hover:opacity-70 transition-opacity"
                 data-bug="02"
+                data-img={imgBug02.src}
               >
                 <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">Fehler anzeigen</span>
                 <span class="text-[12px] text-text-900">→</span>
@@ -145,6 +150,7 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
               <button
                 class="bug-overlay-trigger border-t border-border pt-12 flex gap-8 items-center mt-auto w-full text-left hover:opacity-70 transition-opacity"
                 data-bug="03"
+                data-img={imgBug03.src}
               >
                 <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">Fehler anzeigen</span>
                 <span class="text-[12px] text-text-900">→</span>
@@ -526,19 +532,19 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
     const bugOverlayTitle = document.getElementById('bug-overlay-title');
     const bugOverlayImg = document.getElementById('bug-overlay-img') as HTMLImageElement | null;
 
-    const bugData: Record<string, { title: string; img: string }> = {
-      '01': { title: 'Bug 01 – Preis-Diskrepanz', img: '/images/gleicher_preis.png' },
-      '02': { title: 'Bug 02 – Wärmepumpenkarte führt in Sackgasse', img: '/images/weiter_button_fehlt.png' },
-      '03': { title: 'Bug 03 – Multi-Choice statt Single-Choice', img: '/images/doppelte_auswahl.png' },
+    const bugTitles: Record<string, string> = {
+      '01': 'Bug 01 – Preis-Diskrepanz',
+      '02': 'Bug 02 – Wärmepumpenkarte führt in Sackgasse',
+      '03': 'Bug 03 – Multi-Choice statt Single-Choice',
     };
 
-    function openBugOverlay(bugId: string) {
-      const data = bugData[bugId];
-      if (!data || !bugOverlay) return;
-      if (bugOverlayTitle) bugOverlayTitle.textContent = data.title;
+    function openBugOverlay(bugId: string, imgSrc: string) {
+      const title = bugTitles[bugId];
+      if (!title || !bugOverlay) return;
+      if (bugOverlayTitle) bugOverlayTitle.textContent = title;
       if (bugOverlayImg) {
-        bugOverlayImg.src = data.img;
-        bugOverlayImg.alt = data.title;
+        bugOverlayImg.src = imgSrc;
+        bugOverlayImg.alt = title;
       }
       bugOverlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
@@ -552,7 +558,8 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
     document.querySelectorAll<HTMLButtonElement>('.bug-overlay-trigger').forEach((btn) => {
       btn.addEventListener('click', () => {
         const id = btn.dataset.bug;
-        if (id) openBugOverlay(id);
+        const img = btn.dataset.img ?? '';
+        if (id) openBugOverlay(id, img);
       });
     });
 
