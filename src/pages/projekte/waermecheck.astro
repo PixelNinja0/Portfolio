@@ -475,16 +475,9 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
           </svg>
         </button>
       </div>
-      <!-- Images -->
-      <div class="grid grid-cols-1 md:grid-cols-2 overflow-y-auto">
-        <div class="flex flex-col gap-12 p-24 md:p-40 md:border-r border-border">
-          <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">VORHER</span>
-          <img id="bug-overlay-vorher" src="" alt="" class="w-full rounded border border-border object-contain" />
-        </div>
-        <div class="flex flex-col gap-12 p-24 md:p-40 border-t md:border-t-0 border-border">
-          <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">NACHHER</span>
-          <img id="bug-overlay-nachher" src="" alt="" class="w-full rounded border border-border object-contain" />
-        </div>
+      <!-- Image -->
+      <div class="overflow-y-auto p-24 md:p-40">
+        <img id="bug-overlay-img" src="" alt="" class="w-full rounded border border-border object-contain" />
       </div>
     </div>
     </div>
@@ -531,26 +524,21 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
     const bugOverlay = document.getElementById('bug-overlay');
     const bugOverlayClose = document.getElementById('bug-overlay-close');
     const bugOverlayTitle = document.getElementById('bug-overlay-title');
-    const bugOverlayVorher = document.getElementById('bug-overlay-vorher') as HTMLImageElement | null;
-    const bugOverlayNachher = document.getElementById('bug-overlay-nachher') as HTMLImageElement | null;
+    const bugOverlayImg = document.getElementById('bug-overlay-img') as HTMLImageElement | null;
 
-    const bugTitles: Record<string, string> = {
-      '01': 'Bug 01 – Preis-Diskrepanz',
-      '02': 'Bug 02 – Wärmepumpenkarte führt in Sackgasse',
-      '03': 'Bug 03 – Multi-Choice statt Single-Choice',
+    const bugData: Record<string, { title: string; img: string }> = {
+      '01': { title: 'Bug 01 – Preis-Diskrepanz', img: '/images/gleicher_preis.png' },
+      '02': { title: 'Bug 02 – Wärmepumpenkarte führt in Sackgasse', img: '/images/weiter_button_fehlt.png' },
+      '03': { title: 'Bug 03 – Multi-Choice statt Single-Choice', img: '/images/doppelte_auswahl.png' },
     };
 
     function openBugOverlay(bugId: string) {
-      const title = bugTitles[bugId];
-      if (!title || !bugOverlay) return;
-      if (bugOverlayTitle) bugOverlayTitle.textContent = title;
-      if (bugOverlayVorher) {
-        bugOverlayVorher.src = '/images/vorher-placeholder.jpg';
-        bugOverlayVorher.alt = `${title} – Vorher`;
-      }
-      if (bugOverlayNachher) {
-        bugOverlayNachher.src = '/images/nachher-placeholder.jpg';
-        bugOverlayNachher.alt = `${title} – Nachher`;
+      const data = bugData[bugId];
+      if (!data || !bugOverlay) return;
+      if (bugOverlayTitle) bugOverlayTitle.textContent = data.title;
+      if (bugOverlayImg) {
+        bugOverlayImg.src = data.img;
+        bugOverlayImg.alt = data.title;
       }
       bugOverlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
