@@ -1,0 +1,155 @@
+
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+}
+const { title = 'Liam Dahl' } = Astro.props;
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-background text-text-900 font-body">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 flex items-center justify-between px-20 py-16 md:px-80 md:py-40 bg-background border-b border-border">
+      <div class="flex flex-col gap-4">
+        <a href="/" class="font-heading font-medium text-[20px] md:text-[32px] tracking-[1px] text-text-900 leading-normal">
+          LIAM DAHL
+        </a>
+        <span class="hidden md:block font-body text-[12px] text-primary-600">
+          UX Research &amp; Product Optimization
+        </span>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex gap-32 font-body font-medium text-[15px] text-text-900">
+        <a href="/" class="hover:text-primary-600 transition-colors">Home</a>
+        <a href="/#about" class="hover:text-primary-600 transition-colors">About</a>
+        <a href="/#projekte" class="hover:text-primary-600 transition-colors">Projekte</a>
+        <a href="/#kontakt" class="hover:text-primary-600 transition-colors">Kontakt</a>
+      </nav>
+
+      <!-- Burger Button (mobile only) -->
+      <button
+        id="burger"
+        class="md:hidden flex flex-col justify-between w-24 h-16"
+        aria-label="Menü öffnen"
+        aria-expanded="false"
+        aria-controls="nav-overlay"
+      >
+        <span class="block h-2 w-full bg-text-900 rounded-full"></span>
+        <span class="block h-2 w-full bg-text-900 rounded-full"></span>
+        <span class="block h-2 w-full bg-text-900 rounded-full"></span>
+      </button>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div
+      id="nav-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation"
+      class="fixed inset-0 bg-background z-50 flex flex-col items-center justify-center hidden"
+
+    >
+      <button
+        id="nav-close"
+        class="absolute top-20 right-20 w-40 h-40 flex items-center justify-center font-heading text-[24px] text-text-900 hover:text-primary-600 transition-colors"
+        aria-label="Menü schließen"
+      >
+        ✕
+      </button>
+      <nav class="flex flex-col items-center gap-40 font-heading font-semibold text-[28px] text-text-900">
+        <a href="/" class="hover:text-primary-600 transition-colors">Home</a>
+        <a href="/#about" class="hover:text-primary-600 transition-colors">About</a>
+        <a href="/#projekte" class="hover:text-primary-600 transition-colors">Projekte</a>
+        <a href="/#kontakt" class="hover:text-primary-600 transition-colors">Kontakt</a>
+      </nav>
+    </div>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="mx-20 mb-20 md:mx-80 md:mb-40 flex items-center justify-between gap-16 border border-border rounded-md px-20 py-24 md:px-80 font-body text-[13px] text-text-light">
+      <span>© {new Date().getFullYear()} Liam Dahl</span>
+      <div class="flex gap-16">
+        <a href="/impressum" class="hover:text-text-900 transition-colors">Impressum</a>
+        <a href="/datenschutz" class="hover:text-text-900 transition-colors">Datenschutz</a>
+      </div>
+    </footer>
+
+    <script>
+      const burger = document.getElementById('burger');
+      const overlay = document.getElementById('nav-overlay');
+      const closeBtn = document.getElementById('nav-close');
+
+      function openMenu() {
+        overlay?.classList.remove('hidden');
+        burger?.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        overlay?.classList.add('hidden');
+        burger?.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      burger?.addEventListener('click', openMenu);
+      closeBtn?.addEventListener('click', closeMenu);
+
+      overlay?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // Active nav link via IntersectionObserver
+      const navLinks = document.querySelectorAll<HTMLAnchorElement>('header nav a[href^="/#"], header nav a[href="/"]');
+
+      const sectionMap = new Map<string, HTMLAnchorElement[]>();
+      navLinks.forEach((link) => {
+        const hash = link.getAttribute('href')?.replace('/', '') || '#';
+        const id = hash === '#' ? '' : hash.slice(1);
+        const key = id || '__home__';
+        if (!sectionMap.has(key)) sectionMap.set(key, []);
+        sectionMap.get(key)!.push(link);
+      });
+
+      function setActive(id: string) {
+        navLinks.forEach((l) => l.classList.remove('text-primary-600'));
+        const key = id || '__home__';
+        sectionMap.get(key)?.forEach((l) => l.classList.add('text-primary-600'));
+      }
+
+      const sections = document.querySelectorAll<HTMLElement>('section[id], main > section:not([id])');
+
+      if (sections.length > 0) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setActive((entry.target as HTMLElement).id);
+              }
+            });
+          },
+          { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+        );
+
+        sections.forEach((s) => observer.observe(s));
+      }
+    </script>
+  </body>
+</html>

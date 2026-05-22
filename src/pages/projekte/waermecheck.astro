@@ -1,0 +1,468 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+import mockupHero from '../../assets/images/MockupBuchung.png';
+const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-ab0f098ede5b";
+---
+
+<Layout title="WärmeCheck – Liam Dahl">
+  <div class="flex flex-col md:flex-row md:items-start mx-20 md:mx-80 py-80 md:py-100 gap-40 md:gap-48">
+
+    <!-- Side Nav (Desktop only) -->
+    <aside class="hidden md:block sticky top-139 shrink-0 w-240 border border-border rounded-lg px-24 py-32 self-start">
+      <span class="block font-body font-medium text-[11px] tracking-[0.88px] text-text-light mb-24">CASE STUDY</span>
+      <nav class="flex flex-col gap-8">
+        <a href="#ueberblick" data-section="ueberblick" class="side-nav-link flex items-center gap-12 py-8">
+          <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">01 – Überblick</span>
+        </a>
+        <a href="#kontext" data-section="kontext" class="side-nav-link flex items-center gap-12 py-8">
+          <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">02 – Kontext & Research</span>
+        </a>
+        <a href="#persona" data-section="persona" class="side-nav-link flex items-center gap-12 py-8">
+          <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">03 – Persona & Konzept</span>
+        </a>
+        <a href="#test" data-section="test" class="side-nav-link flex items-center gap-12 py-8">
+          <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">04 – Test & Iteration</span>
+        </a>
+        <a href="#ergebnis" data-section="ergebnis" class="side-nav-link flex items-center gap-12 py-8">
+          <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">05 – Ergebnis & Reflexion</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col gap-80 md:gap-100 min-w-0">
+
+      <!-- 01 Überblick -->
+      <section id="ueberblick" class="flex flex-col gap-32 md:gap-80">
+
+        <!-- Hero Row: text left + visual right on desktop -->
+        <div class="flex flex-col md:flex-row md:gap-80 md:items-center gap-32">
+          <div class="flex flex-col gap-40 md:flex-1">
+            <div class="flex flex-col gap-40">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">USABILITY-TEST · UX-KONZEPT · 2026</span>
+              <div class="flex flex-col gap-32">
+                <h1 class="font-heading font-semibold text-[26px] md:text-[32px] text-text-900 leading-tight tracking-[-0.64px]">WärmeCheck</h1>
+                <div class="flex flex-col gap-24">
+                  <p class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Redesign eines Heizungswartungs-Buchungssystems</p>
+                  <p class="font-body text-[16px] leading-26 text-text-light">Ein generisches SaaS-Buchungstool ersetzt durch eine branchenspezifische, nutzerorientierte Buchungsstrecke – konzipiert, getestet und umgesetzt in 8 Phasen.</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-20 items-center flex-wrap">
+              <Button label="Live Demo sehen" href="https://pixelninja0.github.io/waermecheck-buchung/" variant="primary" />
+              <Button label="GitHub" href="https://github.com/PixelNinja0" variant="secondary" />
+            </div>
+          </div>
+          <!-- Hero Visual -->
+          <div class="w-full h-332 md:w-447 md:h-420 bg-border rounded-[18px] shrink-0 overflow-hidden">
+            <img src={mockupHero.src} alt="WärmeCheck Buchungssystem Mockup" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <!-- Meta Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-16 md:gap-24">
+          <div class="border border-border rounded-lg p-16 md:p-32 flex flex-col gap-16">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">ROLLE</span>
+            <p class="font-heading font-semibold text-[12px] leading-22 text-text-900">UX Research, Interaction Design, Frontend</p>
+          </div>
+          <div class="border border-border rounded-lg p-16 md:p-32 flex flex-col gap-16">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">ZEITRAUM</span>
+            <p class="font-heading font-semibold text-[12px] leading-22 text-text-900">2026</p>
+          </div>
+          <div class="border border-border rounded-lg p-16 md:p-32 flex flex-col gap-16">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">TOOLS</span>
+            <p class="font-heading font-semibold text-[12px] leading-22 text-text-900">Figma, HTML, Tailwind CSS</p>
+          </div>
+          <div class="border border-border rounded-lg p-16 md:p-32 flex flex-col gap-16">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">METHODEN</span>
+            <p class="font-heading font-semibold text-[12px] leading-22 text-text-900">Heuristik, Usability-Test, Iteration</p>
+          </div>
+        </div>
+
+        <!-- Projektübersicht Card -->
+        <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+          <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">Projektübersicht</span>
+          <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 tracking-[-0.2px] leading-snug">Von generisch zu branchenspezifisch – ein Buchungssystem neu gedacht</p>
+          <p class="font-body text-[16px] leading-26 text-text-light">Im Rahmen einer Konzeptstudie habe ich das Buchungssystem eines Hamburger Heizungsfachbetriebs (GasControl) analysiert und unter dem Projektnamen WärmeCheck neu konzipiert. Das genutzte generische SaaS-Buchungstool befolgte keine UX- und UI-Richtlinien, was zu Verwirrung, Fehlern und potenziellen Abbrüchen führte. Im Rahmen der Analyse habe ich 3 funktionale Bugs und mithilfe der Nielsen-Heuristiken 10 UX-Probleme identifiziert. Auf Basis einer Persona und einem klaren Nutzerfluss habe ich ein branchenspezifisches Redesign entwickelt, das in einem Usability-Test mit 4 Probanden getestet.</p>
+        </div>
+      </section>
+
+      <!-- 02 Kontext & Research -->
+      <section id="kontext" class="flex flex-col gap-32 md:gap-80">
+        <div class="flex flex-col gap-32">
+          <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">KONTEXT & PROBLEMSTELLUNG</span>
+          <div class="flex flex-col gap-24">
+            <h2 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Saisonales Geschäft, kritische Buchungsstrecke</h2>
+            <div class="flex flex-col gap-20">
+              <p class="font-body text-[16px] leading-26 text-text-light">GasControl ist ein Hamburger Heizungsfachbetrieb, der Privatkunden bei der jährlichen Wartung, Reparatur und Instandhaltung von Gasheizungen betreut. Das Kerngeschäft ist saisonal und der Großteil der Buchungen findet im Spätsommer und Herbst statt, bevor die Heizperiode beginnt. In dieser umsatzstärksten Phase ist eine funktionierende Buchungsstrecke geschäftskritisch.</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Für die Online-Terminbuchung nutzte GasControl ein generisches SaaS-Tool (eTermin.net). In der Analyse zeigte sich: Das Tool verletzt grundlegende UX-Prinzipien. Buttons verschwinden ohne Erklärung, Preisangaben sind fehlerhaft, beim Zurücknavigieren gehen alle Eingaben verloren, ohne jede Vorwarnung. Ein Nutzer, der einen Termin buchen will, wird systematisch in die Irre geführt. Wer abbricht, bucht woanders.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Funktionale Bugs -->
+        <div class="flex flex-col gap-32">
+          <div class="flex flex-col gap-16">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">USER FLOW RECORDING</span>
+            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">3 funktionale Bugs im Live-System</h3>
+          </div>
+          <div class="flex flex-col md:flex-row gap-16 md:gap-24">
+            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">BUG 01</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Preis-Diskrepanz 30 kW vs. 60 kW</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Klick auf das 60-kW-Paket (360 EUR) führt im Buchungstool zum 30-kW-Preis (215 EUR). Der Nutzer bucht unwissentlich falsch.</p>
+              <div class="border-t border-border pt-12 flex gap-8 items-center mt-auto">
+                <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">Vorher / Nachher ansehen</span>
+                <span class="text-[12px] text-text-900">→</span>
+              </div>
+            </div>
+            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">BUG 02</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Wärmepumpen-Karte führt in Sackgasse</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Karte sieht aus wie eine Auswahl, ist aber ein Hinweis. Bei Klick verschwindet der Weiter-Button. Der Nutzer denkt, er habe etwas kaputt gemacht.</p>
+            </div>
+            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">BUG 03</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Multi-Choice statt Single-Choice</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Im Kontaktformular lassen sich Bestandskunde und Neukunde gleichzeitig anklicken. Das System speichert widersprüchliche Daten.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top-4-Findings -->
+        <div class="flex flex-col gap-32">
+          <div class="flex flex-col gap-16">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">HEURISTISCHE EVALUATION NACH NIELSEN</span>
+            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Top-4-Findings</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">SEVERITY 4 – KATASTROPHAL</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Datenverlust ohne Vorwarnung</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Beim Zurückspringen in der Buchung gehen alle Eingaben der nachfolgenden Schritte verloren. Ohne Warnung, ohne Recovery. Das Tool ermutigt aktiv zum Zurückspringen, bestraft es aber.</p>
+              <div class="border-t border-border pt-12 flex gap-8 items-center mt-auto">
+                <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">Vorher / Nachher ansehen</span>
+                <span class="text-[12px] text-text-900">→</span>
+              </div>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">SEVERITY 4 – KATASTROPHAL</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Falscher Preis durch Bug</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Klick auf das 60-kW-Paket führt zum 30-kW-Preis im Buchungstool. Rechtlich heikel, vertrauenszerstörend. Der Nutzer merkt es erst auf der Rechnung.</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">SEVERITY 4 – KATASTROPHAL</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Verbindliche Buchung ohne Kontrollschleife</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Es gibt keine Übersichtsseite vor der Buchung und keinen Bestätigungs-Dialog. Ein Klick – und die Buchung ist verbindlich. Tippfehler werden erst bemerkt, wenn die Bestätigungsmail ausbleibt.</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">SEVERITY 4 – KATASTROPHAL</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Tool erwartet Fachwissen, das die Zielgruppe nicht hat</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Begriffe wie Brennwerttechnik, kW-Klasse und die Bedeutung der Hersteller-Auswahl werden nicht erklärt. Privatkunden raten – oder brechen ab.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 Persona & Konzept -->
+      <section id="persona" class="flex flex-col gap-32 md:gap-80">
+
+        <!-- Persona -->
+        <div class="flex flex-col gap-32">
+          <div class="flex flex-col gap-20">
+            <span class="font-body font-medium text-[14px] tracking-[0.84px] text-text-light">NUTZERVERSTÄNDNIS</span>
+            <h2 class="font-heading font-semibold text-[26px] md:text-[32px] text-text-900">Markus Zimmermann – Hauptpersona</h2>
+          </div>
+          <div class="bg-border rounded-md p-24 md:p-32 flex flex-col md:flex-row gap-32 md:gap-24">
+            <!-- Left: Photo + Stats -->
+            <div class="flex flex-col gap-40 shrink-0 md:w-387">
+              <div class="w-full aspect-square md:w-369 md:h-369 rounded-lg overflow-hidden bg-background flex items-center justify-center">
+                <img src={imgPersona} alt="Markus Hoffmann" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col gap-20 text-text-900">
+                <div class="flex justify-between items-center">
+                  <span class="font-heading font-semibold text-[12px] tracking-[0.72px]">Alter</span>
+                  <span class="font-body text-[16px] leading-26">54 Jahre</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-heading font-semibold text-[12px] tracking-[0.72px]">Wohnort</span>
+                  <span class="font-body text-[16px] leading-26">Hamburg-Bergedorf</span>
+                </div>
+                <div class="flex justify-between items-center gap-16">
+                  <span class="font-heading font-semibold text-[12px] tracking-[0.72px] shrink-0">Situation</span>
+                  <span class="font-body text-[16px] leading-26 text-right">Eigentümer Einfamilienhaus, neu umgezogen</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-heading font-semibold text-[12px] tracking-[0.72px]">Tech Affinität</span>
+                  <span class="font-body text-[16px] leading-26">Mittel</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-heading font-semibold text-[12px] tracking-[0.72px]">Rolle</span>
+                  <span class="font-body text-[16px] leading-26">Neukunde</span>
+                </div>
+              </div>
+            </div>
+            <!-- Right: Goals + Frustrations + Design Principle -->
+            <div class="flex flex-col gap-32 flex-1">
+              <div class="flex flex-col gap-16">
+                <span class="font-body font-medium text-[12px] tracking-[0.96px] text-text-light">WICHTIGSTE ZIELE</span>
+                <div class="flex flex-col gap-12 font-body text-[16px] leading-26 text-text-900">
+                  <p>– Sicher sein, das Richtige zu buchen</p>
+                  <p>– Vertrauen zur neuen Firma aufbauen</p>
+                  <p>– Möglichst schnell durch sein</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-16">
+                <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">FRUSTRATIONEN IM BESTEHENDEN TOOL</span>
+                <div class="flex flex-col gap-12 font-body text-[16px] leading-26 text-text-900">
+                  <p>– Weiß nicht, welches Paket für seine Heizung gilt</p>
+                  <p>– Springt zurück zum Korrigieren – und verliert alle Eingaben</p>
+                  <p>– Sieht keinen Preis mehr und weiß nicht, ob die Buchung ankam</p>
+                </div>
+              </div>
+              <div class="border border-border bg-background rounded-lg p-24 md:p-32 flex flex-col gap-16">
+                <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">DESIGN-PRINZIP</span>
+                <p class="font-body text-[16px] leading-26 text-text-900">Sicherheit vor Geschwindigkeit. Für einen Erstkunden ist Vertrauen wichtiger als ein Schritt weniger.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Design-Entscheidungen -->
+        <div class="flex flex-col gap-32">
+          <div class="flex flex-col gap-24">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">DESIGN-PROZESS</span>
+            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Wichtige Design-Entscheidungen</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24">
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">01</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Primärfarbe Orange statt Rot</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Das Original-Tool nutzt aggressives Rot. WärmeCheck setzt auf wärmeres Orange (#E8720C) – thematisch passend und einladender für Neukunden.</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">02</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Region und Service als getrennte Schritte</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Im Original waren Stadtteilsuche, Angebot und Zusatzleistungen auf einer Seite. Im Redesign klar getrennt und konsistent benannt.</p>
+              <div class="border-t border-border pt-12 flex gap-8 items-center mt-auto">
+                <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">Vorher / Nachher ansehen</span>
+                <span class="text-[12px] text-text-900">→</span>
+              </div>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">03</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">kW-Klasse mit Analogie erklären</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Statt nur „30 kW" eine Erklärung direkt in der Auswahl: „typisch für Wohnungen bis ~150qm". Plus eine „Ich bin unsicher"-Option.</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">04</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Inline-Fehlermeldungen</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Fehlermeldungen erscheinen direkt unter dem Feld – nicht zentral oben. Behebt eines der stärksten Findings der Heuristischen Evaluation.</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">05</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Review-Seite vor verbindlicher Buchung</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Vollständige Übersicht vor dem finalen Klick, plus Bestätigungs-Dialog mit Preisnennung. Der Nutzer entscheidet bewusst.</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">06</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Bewusst weggelassen</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Login-System, echtes Backend, Admin-Bereich – alles außerhalb des MVP-Scope. Fokus bleibt auf dem Buchungsflow selbst.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 Test & Iteration -->
+      <section id="test" class="flex flex-col gap-32 md:gap-80">
+
+        <!-- Header + Stats -->
+        <div class="flex flex-col gap-40">
+          <div class="flex flex-col gap-32">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">USABILITY-TEST</span>
+            <div class="flex flex-col gap-24">
+              <h2 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">4 Probanden, ein Flow, klare Ergebnisse</h2>
+              <p class="font-body text-[16px] leading-26 text-text-light">Vier Probanden vor Ort getestet. Bei den Probanden handelt es sich um 4 Personen mittleren Alters (wie Persona Markus im Alter zwischen 45–55) und 2 Jüngeren (im Alter von 20–30). Jeder Proband hat dieselben Aufgaben durchlaufen: von der Startseite bis zur Buchungsbestätigung, ohne Hilfe.</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-16 md:gap-24">
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+              <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">6</p>
+              <p class="font-body font-medium text-[13px] text-text-light">Probanden vor Ort</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+              <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">100%</p>
+              <p class="font-body font-medium text-[13px] text-text-light">Erfolgsrate</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+              <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">1:46</p>
+              <p class="font-body font-medium text-[13px] text-text-light">Min. Durchlaufzeit</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+              <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">3</p>
+              <p class="font-body font-medium text-[13px] text-text-light">Kritische Findings</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ergebnisse -->
+        <div class="flex flex-col gap-32">
+          <div class="flex flex-col gap-32">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">ERGEBNISSE</span>
+            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Was die Probanden gezeigt haben</h3>
+          </div>
+          <div class="flex flex-col md:flex-row gap-16 md:gap-24">
+            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">STÄRKSTES FINDING</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">PLZ/Ort-Inkonsistenz</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Alle vier Probanden waren beim PLZ/Ort-Feld verwirrt. Die Überschrift sagte „Ort oder PLZ", das Feld zeigte nur „PLZ". Ein klassischer Konsistenz-Verstoß, der mir im eigenen Durchlauf nicht aufgefallen war.</p>
+            </div>
+            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">ZWEITES FINDING</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Nutzer scannen, lesen nicht</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Mehrere Probanden klickten Buttons, ohne die Inhalte vollständig zu lesen – besonders bei Service-Karten. Beschreibungstexte müssen kürzer und relevanter werden.</p>
+            </div>
+            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">ÜBERRASCHUNG</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Techniker-Anzeige wirkt</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Die Anzeige mit Name und Foto löste beim ältesten Probanden eine sichtbar positive Reaktion aus: „Ah, witzig." Bestätigt: Vertrauenssignale wirken, besonders bei der Hauptpersona.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Iteration -->
+        <div class="flex flex-col gap-32">
+          <div class="flex flex-col gap-32">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">ITERATION</span>
+            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Vier konkrete Änderungen auf Basis der Findings</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">FIX 01</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">PLZ/Ort-Inkonsistenz behoben</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Placeholder und Überschrift angeglichen. Das Feld akzeptiert jetzt explizit beides – PLZ oder Ortsname.</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">FIX 02</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">kW-Hinweis prominenter</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Hinweis „Die kW-Zahl steht auf dem Typenschild" um eine Analogie ergänzt. „Weiß ich nicht"-Option visuell hervorgehoben.</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">FIX 03</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Hersteller-Auswahl umsortiert</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Die „Ich bin unsicher"-Option als erste Option in der Liste platziert – ältere Probanden hatten sie am Ende übersehen.</p>
+            </div>
+            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">FIX 04</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Datum-Hinweis ergänzt</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Zeitslots sind erst sichtbar, nachdem ein Datum gewählt wurde – mit klarem Hinweis „Bitte wählen Sie zuerst ein Datum".</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 Ergebnis & Reflexion -->
+      <section id="ergebnis" class="flex flex-col gap-40 md:gap-80">
+
+        <!-- Result Card -->
+        <div class="border border-border rounded-lg p-24 md:p-48 flex flex-col gap-32 md:gap-40">
+          <div class="flex flex-col gap-32">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">ERGEBNIS</span>
+            <div class="flex flex-col gap-24">
+              <h2 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Eine vollständige, funktionsfähige Buchungsstrecke – responsive, mit echten Fehlerzuständen und konsistenten Design-Tokens.</h2>
+              <p class="font-body text-[16px] leading-26 text-text-light">Das Ergebnis basiert auf einer realen Persona, systematischer Analyse und einem Usability-Test mit 6 Probanden und 100% Erfolgsrate. Durchschnittliche Durchlaufzeit: 1:46 Min.</p>
+            </div>
+          </div>
+          <div class="flex gap-32 items-center flex-wrap">
+            <Button label="Live Demo ansehen" href="https://pixelninja0.github.io/waermecheck-buchung/" variant="primary" />
+            <Button label="GitHub Repository" href="https://github.com/PixelNinja0" variant="secondary" />
+          </div>
+        </div>
+
+        <!-- Learnings -->
+        <div class="flex flex-col gap-40">
+          <div class="flex flex-col gap-32">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">LEARNINGS</span>
+            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Was ich aus dem Projekt mitnehme</h3>
+          </div>
+          <div class="flex flex-col md:flex-row gap-16 md:gap-24">
+            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">01</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Methodisch sauber vorgehen zahlt sich aus</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Der größte Lerneffekt war die Disziplin, Phasen wirklich einzuhalten: erst verstehen, dann definieren, dann designen. Die Heuristische Evaluation hat Befunde produziert, die ich ohne strukturierte Methodik nie gefunden hätte – zum Beispiel den Datenverlust-Bug.</p>
+            </div>
+            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">02</span>
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Testen was man baut</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Der Usability-Test hat gezeigt, dass selbst Probleme, die ich für klein hielt (PLZ/Ort-Inkonsistenz), alle vier Probanden betroffen haben. Und Probleme, die ich für groß hielt (kW-Auswahl), wurden durch die richtige Hilfestellung entschärft. Ohne echte Probanden wäre das Redesign auf meinen eigenen Annahmen geblieben.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reflexion -->
+        <div class="flex flex-col gap-40">
+          <div class="flex flex-col gap-32">
+            <span class="font-body font-medium text-[14px] tracking-[0.84px] text-text-light">PERSÖNLICH</span>
+            <h3 class="font-heading font-semibold text-[26px] md:text-[28px] text-text-900">Reflexion in eigenen Worten</h3>
+          </div>
+          <div class="flex flex-col md:flex-row gap-16 md:gap-24">
+            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Was würdest du anders machen?</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Was würdest du beim nächsten Projekt früher oder anders angehen?</p>
+            </div>
+            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+              <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Was nimmst du persönlich mit?</p>
+              <p class="font-body text-[16px] leading-26 text-text-light">Ein persönlicher Satz, der zeigt, wer du als Designer bist und was dich antreibt.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    const sideLinks = document.querySelectorAll<HTMLAnchorElement>('.side-nav-link');
+    const sections = document.querySelectorAll<HTMLElement>('section[id]');
+
+    function setSideActive(id: string) {
+      sideLinks.forEach((link) => {
+        const isActive = link.dataset.section === id;
+        const bar = link.querySelector<HTMLElement>('[data-bar]');
+        const text = link.querySelector<HTMLElement>('[data-text]');
+        if (bar) {
+          bar.classList.toggle('w-20', isActive);
+          bar.classList.toggle('w-4', !isActive);
+          bar.classList.toggle('bg-text-900', isActive);
+          bar.classList.toggle('bg-text-light', !isActive);
+        }
+        if (text) {
+          text.classList.toggle('font-semibold', isActive);
+          text.classList.toggle('font-normal', !isActive);
+          text.classList.toggle('text-text-900', isActive);
+          text.classList.toggle('text-text-light', !isActive);
+        }
+      });
+    }
+
+    if (sections.length > 0 && sideLinks.length > 0) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setSideActive((entry.target as HTMLElement).id);
+          });
+        },
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      );
+      sections.forEach((s) => observer.observe(s));
+      setSideActive('ueberblick');
+    }
+  </script>
+</Layout>

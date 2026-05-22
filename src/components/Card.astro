@@ -1,0 +1,19 @@
+---
+interface Props {
+  kicker?: string;
+  title: string;
+  body: string;
+  withIndicator?: boolean;
+}
+const { kicker, title, body, withIndicator = false } = Astro.props;
+---
+<div class="relative bg-background border border-border rounded-lg p-24">
+  {withIndicator && (
+    <span class="absolute top-24 right-24 w-8 h-8 rounded-full bg-primary-500"></span>
+  )}
+  {kicker && (
+    <p class="font-body text-[12px] text-primary-600 uppercase tracking-[2px] mb-8">{kicker}</p>
+  )}
+  <h3 class="font-heading font-medium text-[20px] text-text-900 leading-snug mb-12">{title}</h3>
+  <p class="font-body text-[14px] text-text-light leading-[1.6]">{body}</p>
+</div>

@@ -1,0 +1,19 @@
+---
+interface Props {
+  kicker?: string;
+  title: string;
+  subtitle?: string;
+}
+const { kicker, title, subtitle } = Astro.props;
+---
+<div class="flex flex-col gap-16 items-center text-center">
+  {kicker && (
+    <p class="font-body text-[12px] text-primary-600 uppercase tracking-[2px]">{kicker}</p>
+  )}
+  <h2 class="font-heading font-semibold text-[32px] leading-tight tracking-[-0.96px] md:text-[48px] md:leading-[53px] md:tracking-[-1.44px] text-text-900">
+    {title}
+  </h2>
+  {subtitle && (
+    <p class="font-body text-[16px] text-text-light leading-[1.6] max-w-[600px]">{subtitle}</p>
+  )}
+</div>

@@ -1,19 +1,272 @@
 ---
-import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import mockupKachel from '../assets/images/Mockupbuchungprojekt.png';
+
+const skills = [
+  'UI / UX Design',
+  'UX Research',
+  'Product Strategy',
+  'Technische Umsetzung',
+];
+
+const photoSrc = 'https://www.figma.com/api/mcp/asset/3cf6ae73-fae3-4902-92ec-bb12a2c1c650';
+
+const tabs = [
+  {
+    id: 'erfahrung',
+    label: 'Erfahrung',
+    entries: [
+      { period: 'April – August 2026', title: 'Praktikum Spielgelinstitut UI/UX Design' },
+      { period: '2017 – 2021', title: 'Konstruktionsmechaniker Lutz Aufzüge' },
+    ],
+  },
+  {
+    id: 'ausbildung',
+    label: 'Ausbildung',
+    entries: [
+      { period: '2022 – 2026', title: 'Ingenieurpsychologie B.Sc.' },
+      { period: '2017 – 2021', title: 'Ausbildung Konstruktionsmechaniker' },
+    ],
+  },
+  {
+    id: 'zertifikate',
+    label: 'Zertifikate',
+    entries: [] as { period: string; title: string }[],
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1 class="bg-background text-text-900 font-heading p-32 rounded-lg">
-  			Token-Test
-		</h1>
-	</body>
-</html>
+<Layout title="Liam Dahl — UX Research & Product Optimization">
+
+  <!-- ── Hero ── -->
+  <section class="px-20 py-80 md:px-80 md:py-100 flex flex-col gap-56 md:gap-80 items-center">
+
+    <div class="flex flex-col gap-32 md:gap-40 items-center text-center w-full max-w-[860px]">
+      <div class="flex flex-col gap-20 md:gap-24 items-center w-full">
+        <h1 class="font-heading font-semibold text-[30px] leading-[40px] tracking-[-0.9px] md:text-[48px] md:leading-[53px] md:tracking-[-1.44px] bg-gradient-to-r from-[#9d9d9d] to-[#2fa37a] bg-clip-text text-transparent">
+          Ich Optimiere Komplexe Systeme für Menschen
+        </h1>
+        <p class="font-heading font-semibold text-[18px] leading-[25px] md:text-[26px] md:leading-[28px] text-primary-600">
+          Von der Analyse über UX bis zur technischen Umsetzung<br />
+          für effizientere Prozesse und bessere Bedienbarkeit.
+        </p>
+      </div>
+      <div class="flex gap-20 md:gap-24 items-center">
+        <Button label="Zu den Projekten" href="#projekte" variant="primary" />
+        <Button label="Kontaktiere mich" href="#kontakt" variant="secondary" />
+      </div>
+    </div>
+
+    <!-- Skill Tiles -->
+    <div class="flex flex-wrap justify-center gap-8 md:gap-24 md:flex-nowrap w-full">
+      {skills.map((skill) => (
+        <div class="relative flex items-center justify-center w-[165px] h-76 md:w-[301px] md:h-138 p-24 rounded-[10px] border border-border bg-background">
+          <span class="font-heading font-semibold text-[18px] leading-[25px] md:text-[28px] md:leading-[36px] md:tracking-[-0.28px] text-primary-600 text-center">
+            {skill}
+          </span>
+        </div>
+      ))}
+    </div>
+
+  </section>
+
+  <!-- ── About ── -->
+  <section id="about" class="px-20 py-80 md:px-80 md:py-100 border-t border-border">
+    <div class="flex flex-col md:flex-row gap-48 md:gap-64 items-start w-full max-w-7xl mx-auto">
+
+      <!-- Photo -->
+      <div class="w-213 h-319 md:w-367 md:h-550 shrink-0 rounded-md overflow-hidden mx-auto md:mx-0">
+        <img
+          src={photoSrc}
+          alt="Liam Dahl"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <!-- Right Column -->
+      <div class="flex flex-col gap-48 md:gap-64 flex-1 min-w-0">
+
+        <!-- Bio -->
+        <p class="font-body font-normal text-[16px] leading-26 text-text-900 text-center md:text-left md:text-[15px] md:leading-20 md:tracking-[0.5px]">
+          Hey ich bin Liam.<br />
+          Ich beschäftige mich damit, komplexe Systeme einfacher und effizienter zu machen.
+          Durch meinen Hintergrund in Ingenieurpsychologie verbinde ich technisches Verständnis
+          mit Wissen über menschliches Verhalten. Mich interessiert nicht nur, wie etwas aussieht –
+          sondern vor allem, wie es genutzt wird und wo Probleme entstehen. In meinen Projekten
+          analysiere ich bestehende Systeme, identifiziere Schwachstellen und entwickle Lösungen,
+          die sowohl funktional als auch intuitiv sind. Dabei arbeite ich strukturiert von der
+          Recherche über die Gestaltung bis hin zur technischen Umsetzung. Mein Fokus liegt auf
+          technischen und handwerklichen Kontexten, überall dort, wo Systeme komplex sind und
+          zuverlässig funktionieren müssen. Mein Ziel ist es, Produkte und Prozesse so zu gestalten,
+          dass sie für Menschen wirklich funktionieren.
+        </p>
+
+        <!-- Tabs -->
+        <div>
+          <div role="tablist" class="flex gap-24 md:gap-32 border-b border-border">
+            {tabs.map((tab, i) => (
+              <button
+                role="tab"
+                aria-selected={i === 0 ? 'true' : 'false'}
+                data-target={tab.id}
+                class="pb-12 font-heading font-semibold text-[16px] md:text-[20px] leading-20 border-b-2 -mb-px transition-colors text-text-light border-transparent aria-selected:border-primary-600 aria-selected:text-text-900"
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          <div class="pt-32 md:pt-40">
+            {tabs.map((tab, i) => (
+              <div id={tab.id} role="tabpanel" hidden={i !== 0 || undefined}>
+                {tab.entries.length > 0 ? (
+                  <div class="flex flex-col">
+                    {tab.entries.map((entry, j) => (
+                      <div class="flex gap-16 items-start">
+                        <div class="flex flex-col items-center w-12 shrink-0 pt-5">
+                          <div class="w-10 h-10 rounded-full bg-primary-600 shrink-0"></div>
+                          {j < tab.entries.length - 1 && (
+                            <div class="w-px bg-border flex-1 mt-8 min-h-40"></div>
+                          )}
+                        </div>
+                        <div class="pb-32">
+                          <p class="font-body font-semibold text-[14px] md:text-[15px] leading-20 text-primary-600">
+                            {entry.period}
+                          </p>
+                          <p class="font-body font-semibold text-[14px] md:text-[15px] leading-20 text-text-900 mt-4">
+                            {entry.title}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p class="font-body text-[14px] text-text-light">Noch keine Einträge vorhanden.</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Projekte ── -->
+  <section id="projekte" class="px-20 py-80 md:px-80 md:py-100 border-t border-border">
+    <div class="flex flex-col gap-16 md:gap-24 w-full max-w-7xl mx-auto">
+      <ProjectCard
+        title="Buchungssystem Redesign"
+        year="2026"
+        href="/projekte/waermecheck"
+        imageSrc={mockupKachel.src}
+        imageAlt="WärmeCheck Buchungssystem Mockup"
+        layout="image-left"
+      />
+      <ProjectCard
+        title="Greybox – Smartphone Detox"
+        year="2025"
+        layout="image-right"
+        comingSoon
+      />
+      <ProjectCard
+        title="Accessible PDF Reader"
+        year="2025"
+        layout="image-left"
+        comingSoon
+      />
+    </div>
+  </section>
+
+  <!-- ── Kontakt ── -->
+  <section id="kontakt" class="px-20 py-80 md:px-80 md:py-100 border-t border-border">
+    <div class="flex flex-col md:flex-row md:items-start gap-24 md:gap-56 max-w-7xl mx-auto">
+
+      <!-- Heading + Social: mobile top, desktop right -->
+      <div class="md:order-2 md:w-440 md:shrink-0 flex flex-col gap-16 md:gap-24">
+        <div class="flex flex-col gap-16">
+          <h2 class="font-heading font-medium text-[22px] leading-29 tracking-[-0.22px] md:font-semibold md:text-[32px] md:leading-38 md:tracking-[-0.64px] text-text-900">
+            Kontaktiere <span class="text-primary-500">mich</span>
+          </h2>
+          <p class="font-body text-[16px] leading-26 text-text-900">
+            Benutze dafür auch gerne meine sozialen Medien
+          </p>
+        </div>
+        <div class="flex gap-20 items-center">
+          <a href="https://www.linkedin.com/in/liam-dahl-a2b288335" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-text-900 hover:text-primary-600 transition-colors">
+            <svg class="w-26 h-26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/PixelNinja0" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-text-900 hover:text-primary-600 transition-colors">
+            <svg class="w-26 h-26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-text-900 hover:text-primary-600 transition-colors">
+            <svg class="w-26 h-26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Form: mobile bottom, desktop left -->
+      <form
+        method="POST"
+        action="https://formspree.io/f/xykvedvq"
+        class="md:order-1 flex-1 flex flex-col gap-16"
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          required
+          class="w-full h-54 md:h-56 px-20 py-16 bg-background border border-border rounded-md font-body text-[16px] leading-26 text-text-900 placeholder:text-text-light focus:outline-none focus:border-primary-600 transition-colors appearance-none"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          class="w-full h-54 md:h-56 px-20 py-16 bg-background border border-border rounded-md font-body text-[16px] leading-26 text-text-900 placeholder:text-text-light focus:outline-none focus:border-primary-600 transition-colors appearance-none"
+        />
+        <textarea
+          name="message"
+          placeholder="Deine Nachricht"
+          required
+          class="w-full h-198 md:h-160 px-20 py-16 bg-background border border-border rounded-md font-body text-[16px] leading-26 text-text-900 placeholder:text-text-light focus:outline-none focus:border-primary-600 transition-colors resize-none"
+        ></textarea>
+        <button
+          type="submit"
+          class="self-start bg-primary-600 text-background font-body font-medium text-[15px] px-24 py-16 rounded-md hover:opacity-80 transition-opacity"
+        >
+          Senden
+        </button>
+      </form>
+
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const tabBtns = document.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+  const tabPanels = document.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach((b) => b.setAttribute('aria-selected', 'false'));
+      tabPanels.forEach((p) => { p.hidden = true; });
+      btn.setAttribute('aria-selected', 'true');
+      const target = btn.dataset.target;
+      if (target) {
+        const panel = document.getElementById(target);
+        if (panel) panel.hidden = false;
+      }
+    });
+  });
+</script>

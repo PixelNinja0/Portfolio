@@ -25,3 +25,13 @@
   --font-body: "Inter", sans-serif;
   --font-heading: "Manrope", sans-serif;
 }
+
+html {
+  scroll-padding-top: 72px;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 121px;
+  }
+}

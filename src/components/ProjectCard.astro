@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  year: string | number;
+  href?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  layout?: 'image-left' | 'image-right';
+  comingSoon?: boolean;
+}
+const {
+  title,
+  year,
+  href,
+  imageSrc,
+  imageAlt = '',
+  layout = 'image-left',
+  comingSoon = false,
+} = Astro.props;
+
+const linkHref = comingSoon ? undefined : href;
+---
+
+<a
+  href={linkHref}
+  class:list={[
+    'flex flex-col md:flex-row items-stretch bg-background border border-border rounded-md overflow-hidden md:h-420',
+    comingSoon
+      ? 'opacity-60 cursor-default'
+      : 'group hover:border-primary-500 transition-colors',
+  ]}
+>
+  {layout === 'image-left' && (
+    <div class="w-full h-[180px] md:w-1/2 md:h-auto bg-border flex items-center justify-center overflow-hidden shrink-0">
+      {imageSrc
+        ? <img src={imageSrc} alt={imageAlt} class="w-full h-full object-cover" />
+        : <span class="font-heading font-semibold text-[11px] md:text-[12px] text-text-900/50 tracking-[0.66px]">[ Projekt-Bild ]</span>
+      }
+    </div>
+  )}
+
+  <div class="flex-1 flex flex-col gap-4 p-20 md:gap-12 md:justify-center md:px-100 md:py-48">
+    <h3 class:list={[
+      'font-heading font-medium text-[22px] leading-29 tracking-[-0.22px] md:font-semibold md:text-[32px] md:leading-38 md:tracking-[-0.64px]',
+      comingSoon ? 'text-text-900' : 'text-text-900 group-hover:text-primary-600 transition-colors',
+    ]}>
+      {title}
+    </h3>
+    <p class="font-body font-normal text-[16px] leading-26 text-text-900">{year}</p>
+  </div>
+
+  {layout === 'image-right' && (
+    <div class="w-full h-[180px] md:w-1/2 md:h-auto bg-border flex items-center justify-center overflow-hidden shrink-0 md:order-last">
+      {imageSrc
+        ? <img src={imageSrc} alt={imageAlt} class="w-full h-full object-cover" />
+        : <span class="font-heading font-semibold text-[11px] md:text-[12px] text-text-900/50 tracking-[0.66px]">[ Projekt-Bild ]</span>
+      }
+    </div>
+  )}
+</a>

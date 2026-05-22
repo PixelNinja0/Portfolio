@@ -1,0 +1,16 @@
+---
+interface Props {
+  label: string;
+  severity: 'critical' | 'warning';
+}
+const { label, severity } = Astro.props;
+---
+<span
+  class:list={[
+    'inline-flex items-center px-8 py-4 rounded-full font-body font-medium text-[12px] border',
+    severity === 'critical' && 'border-critical text-critical',
+    severity === 'warning' && 'border-warning text-warning',
+  ]}
+>
+  {label}
+</span>
