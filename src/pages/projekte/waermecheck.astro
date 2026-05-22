@@ -118,20 +118,37 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
               <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">BUG 01</span>
               <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Preis-Diskrepanz 30 kW vs. 60 kW</p>
               <p class="font-body text-[16px] leading-26 text-text-light">Klick auf das 60-kW-Paket (360 EUR) führt im Buchungstool zum 30-kW-Preis (215 EUR). Der Nutzer bucht unwissentlich falsch.</p>
-              <div class="border-t border-border pt-12 flex gap-8 items-center mt-auto">
-                <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">Vorher / Nachher ansehen</span>
+              <button
+                class="bug-overlay-trigger border-t border-border pt-12 flex gap-8 items-center mt-auto w-full text-left hover:opacity-70 transition-opacity"
+                data-bug="01"
+              >
+                <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">Fehler anzeigen</span>
                 <span class="text-[12px] text-text-900">→</span>
-              </div>
+              </button>
             </div>
             <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
               <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">BUG 02</span>
               <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Wärmepumpen-Karte führt in Sackgasse</p>
               <p class="font-body text-[16px] leading-26 text-text-light">Karte sieht aus wie eine Auswahl, ist aber ein Hinweis. Bei Klick verschwindet der Weiter-Button. Der Nutzer denkt, er habe etwas kaputt gemacht.</p>
+              <button
+                class="bug-overlay-trigger border-t border-border pt-12 flex gap-8 items-center mt-auto w-full text-left hover:opacity-70 transition-opacity"
+                data-bug="02"
+              >
+                <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">Fehler anzeigen</span>
+                <span class="text-[12px] text-text-900">→</span>
+              </button>
             </div>
             <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
               <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">BUG 03</span>
               <p class="font-heading font-medium text-[18px] md:text-[20px] text-text-900 leading-snug tracking-[-0.2px]">Multi-Choice statt Single-Choice</p>
               <p class="font-body text-[16px] leading-26 text-text-light">Im Kontaktformular lassen sich Bestandskunde und Neukunde gleichzeitig anklicken. Das System speichert widersprüchliche Daten.</p>
+              <button
+                class="bug-overlay-trigger border-t border-border pt-12 flex gap-8 items-center mt-auto w-full text-left hover:opacity-70 transition-opacity"
+                data-bug="03"
+              >
+                <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">Fehler anzeigen</span>
+                <span class="text-[12px] text-text-900">→</span>
+              </button>
             </div>
           </div>
         </div>
@@ -428,6 +445,51 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
     </main>
   </div>
 
+  <!-- Bug Overlay -->
+  <div
+    id="bug-overlay"
+    class="hidden fixed inset-0 z-50"
+    style="background: rgba(31,42,40,0.65);"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="bug-overlay-title"
+  >
+    <div class="flex items-center justify-center w-full h-full p-20 md:p-40">
+    <div
+      id="bug-overlay-panel"
+      class="relative w-full max-w-4xl bg-background rounded-lg overflow-hidden max-h-[90vh] flex flex-col"
+    >
+      <!-- Header -->
+      <div class="flex items-center justify-between gap-16 px-24 py-20 md:px-40 md:py-24 border-b border-border shrink-0">
+        <h2
+          id="bug-overlay-title"
+          class="font-heading font-semibold text-[15px] md:text-[18px] text-text-900 leading-snug"
+        ></h2>
+        <button
+          id="bug-overlay-close"
+          class="shrink-0 w-32 h-32 flex items-center justify-center text-text-light hover:text-text-900 transition-colors"
+          aria-label="Overlay schließen"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <!-- Images -->
+      <div class="grid grid-cols-1 md:grid-cols-2 overflow-y-auto">
+        <div class="flex flex-col gap-12 p-24 md:p-40 md:border-r border-border">
+          <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">VORHER</span>
+          <img id="bug-overlay-vorher" src="" alt="" class="w-full rounded border border-border object-contain" />
+        </div>
+        <div class="flex flex-col gap-12 p-24 md:p-40 border-t md:border-t-0 border-border">
+          <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">NACHHER</span>
+          <img id="bug-overlay-nachher" src="" alt="" class="w-full rounded border border-border object-contain" />
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
   <script>
     const sideLinks = document.querySelectorAll<HTMLAnchorElement>('.side-nav-link');
     const sections = document.querySelectorAll<HTMLElement>('section[id]');
@@ -464,5 +526,56 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
       sections.forEach((s) => observer.observe(s));
       setSideActive('ueberblick');
     }
+
+    // Bug Overlay
+    const bugOverlay = document.getElementById('bug-overlay');
+    const bugOverlayClose = document.getElementById('bug-overlay-close');
+    const bugOverlayTitle = document.getElementById('bug-overlay-title');
+    const bugOverlayVorher = document.getElementById('bug-overlay-vorher') as HTMLImageElement | null;
+    const bugOverlayNachher = document.getElementById('bug-overlay-nachher') as HTMLImageElement | null;
+
+    const bugTitles: Record<string, string> = {
+      '01': 'Bug 01 – Preis-Diskrepanz',
+      '02': 'Bug 02 – Wärmepumpenkarte führt in Sackgasse',
+      '03': 'Bug 03 – Multi-Choice statt Single-Choice',
+    };
+
+    function openBugOverlay(bugId: string) {
+      const title = bugTitles[bugId];
+      if (!title || !bugOverlay) return;
+      if (bugOverlayTitle) bugOverlayTitle.textContent = title;
+      if (bugOverlayVorher) {
+        bugOverlayVorher.src = '/images/vorher-placeholder.jpg';
+        bugOverlayVorher.alt = `${title} – Vorher`;
+      }
+      if (bugOverlayNachher) {
+        bugOverlayNachher.src = '/images/nachher-placeholder.jpg';
+        bugOverlayNachher.alt = `${title} – Nachher`;
+      }
+      bugOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBugOverlay() {
+      bugOverlay?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('.bug-overlay-trigger').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.bug;
+        if (id) openBugOverlay(id);
+      });
+    });
+
+    bugOverlayClose?.addEventListener('click', closeBugOverlay);
+
+    bugOverlay?.addEventListener('click', (e) => {
+      if (e.target === bugOverlay) closeBugOverlay();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !bugOverlay?.classList.contains('hidden')) closeBugOverlay();
+    });
   </script>
 </Layout>
