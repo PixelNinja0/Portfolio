@@ -1,0 +1,75 @@
+<svg width="100%" viewBox="0 0 600 540" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Roboto Mono',ui-monospace,monospace">
+  <defs>
+    <clipPath id="card"><rect x="0" y="0" width="600" height="540" rx="16"/></clipPath>
+    <clipPath id="circle"><circle cx="300" cy="232" r="150"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#card)">
+
+    <!-- card background -->
+    <rect x="0" y="0" width="600" height="540" fill="#f7f3ee"/>
+
+    <!-- portrait disc -->
+    <circle cx="300" cy="232" r="150" fill="#e9e3d9"/>
+    <circle cx="300" cy="232" r="150" fill="none" stroke="#2fa37a" stroke-width="4"/>
+
+    <g clip-path="url(#circle)">
+      <!-- backdrop wedge -->
+      <rect x="150" y="82" width="300" height="300" fill="#e9e3d9"/>
+      <path d="M 150 320 Q 300 250 450 320 L 450 382 L 150 382 Z" fill="#dcd4c6"/>
+
+      <!-- shoulders / top -->
+      <path d="M 178 382 Q 200 296 300 296 Q 400 296 422 382 Z" fill="#1f2a28"/>
+      <path d="M 262 300 L 338 300 L 332 332 Q 300 348 268 332 Z" fill="#2fa37a"/>
+
+      <!-- neck -->
+      <path d="M 280 268 L 320 268 L 320 304 Q 300 314 280 304 Z" fill="#d8a982"/>
+
+      <!-- head -->
+      <ellipse cx="300" cy="208" rx="74" ry="84" fill="#e6b78f"/>
+      <!-- ears -->
+      <circle cx="228" cy="210" r="13" fill="#e6b78f"/>
+      <circle cx="372" cy="210" r="13" fill="#e6b78f"/>
+
+      <!-- hair back -->
+      <path d="M 222 224 Q 210 110 300 104 Q 390 110 378 224 Q 378 150 300 150 Q 222 150 222 224 Z" fill="#3a2a1c"/>
+      <!-- hair top -->
+      <path d="M 226 176 Q 240 116 300 114 Q 360 116 374 176 Q 348 142 300 142 Q 252 142 226 176 Z" fill="#4a3725"/>
+      <!-- hair side strands -->
+      <path d="M 226 176 Q 218 248 232 290 L 250 286 Q 240 230 246 178 Z" fill="#3a2a1c"/>
+      <path d="M 374 176 Q 382 248 368 290 L 350 286 Q 360 230 354 178 Z" fill="#3a2a1c"/>
+
+      <!-- eyebrows -->
+      <path d="M 256 192 Q 272 184 288 192" fill="none" stroke="#3a2a1c" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 312 192 Q 328 184 344 192" fill="none" stroke="#3a2a1c" stroke-width="5" stroke-linecap="round"/>
+
+      <!-- eyes -->
+      <ellipse cx="272" cy="210" rx="11" ry="9" fill="#ffffff"/>
+      <ellipse cx="328" cy="210" rx="11" ry="9" fill="#ffffff"/>
+      <circle cx="274" cy="211" r="5.5" fill="#2a1c10"/>
+      <circle cx="330" cy="211" r="5.5" fill="#2a1c10"/>
+
+      <!-- nose -->
+      <path d="M 300 216 L 294 238 Q 300 244 306 238 Z" fill="#d8a17a"/>
+
+      <!-- mouth -->
+      <path d="M 282 260 Q 300 274 318 260" fill="none" stroke="#a8624a" stroke-width="5" stroke-linecap="round"/>
+
+      <!-- glasses -->
+      <circle cx="272" cy="210" r="22" fill="none" stroke="#1f2a28" stroke-width="4"/>
+      <circle cx="328" cy="210" r="22" fill="none" stroke="#1f2a28" stroke-width="4"/>
+      <line x1="294" y1="206" x2="306" y2="206" stroke="#1f2a28" stroke-width="4"/>
+      <line x1="250" y1="206" x2="240" y2="202" stroke="#1f2a28" stroke-width="4" stroke-linecap="round"/>
+      <line x1="350" y1="206" x2="360" y2="202" stroke="#1f2a28" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <!-- name plate -->
+    <text x="300" y="438" font-size="30" font-weight="700" letter-spacing="-0.5" fill="#1f2a28" text-anchor="middle">Mara Hellwig</text>
+    <text x="300" y="472" font-size="16" font-weight="500" letter-spacing="1" fill="#787878" text-anchor="middle">22 · STUDENTIN · PRÜFUNGSPHASE</text>
+
+    <!-- tag -->
+    <rect x="234" y="492" width="132" height="30" rx="15" fill="#2fa37a"/>
+    <text x="300" y="512" font-size="13" font-weight="700" letter-spacing="1" fill="#1f2a28" text-anchor="middle">HAUPTPERSONA</text>
+
+  </g>
+</svg>

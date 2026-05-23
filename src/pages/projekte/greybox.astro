@@ -1,15 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Button from '../../components/Button.astro';
-
-const imgPersona = "https://www.figma.com/api/mcp/asset/39f3b3d0-2791-4a20-a383-7bc87e96a9f0";
+import pic1 from '../../assets/images/Picture 1.png';
+import pic2 from '../../assets/images/Picture 2.png';
+import pic3 from '../../assets/images/Picture 3.png';
+import pic4 from '../../assets/images/Picture 4.png';
+import pic5 from '../../assets/images/Picture 5.png';
+import personaMara from '../../assets/images/persona_mara.svg';
 
 const sliderImages = [
-  { src: "https://picsum.photos/seed/greybox-a/1210/580", alt: "Greybox Prototyp – Ansicht 1" },
-  { src: "https://picsum.photos/seed/greybox-b/1210/580", alt: "Greybox Prototyp – Ansicht 2" },
-  { src: "https://picsum.photos/seed/greybox-c/1210/580", alt: "Greybox Prototyp – Ansicht 3" },
-  { src: "https://picsum.photos/seed/greybox-d/1210/580", alt: "Greybox Prototyp – Ansicht 4" },
-  { src: "https://picsum.photos/seed/greybox-e/1210/580", alt: "Greybox Prototyp – Ansicht 5" },
+  { src: pic1.src, alt: "Greybox Prototyp – Ansicht 1" },
+  { src: pic2.src, alt: "Greybox Prototyp – Ansicht 2" },
+  { src: pic3.src, alt: "Greybox Prototyp – Ansicht 3" },
+  { src: pic4.src, alt: "Greybox Prototyp – Ansicht 4" },
+  { src: pic5.src, alt: "Greybox Prototyp – Ansicht 5" },
 ];
 ---
 
@@ -61,10 +64,6 @@ const sliderImages = [
                   <p class="font-body text-[16px] leading-26 text-text-light">Ein interaktives Gerät, das Nutzer:innen dabei unterstützt, ihr Smartphone bewusst aus der Hand zu legen. Konzipiert, gebaut und mit echten Proband:innen getestet – mit Fokus auf eine intuitive Mensch-Maschine-Interaktion.</p>
                 </div>
               </div>
-            </div>
-            <div class="flex gap-20 items-center flex-wrap">
-              <Button label="Live Demo sehen" href="#" variant="primary" />
-              <Button label="GitHub" href="https://github.com/PixelNinja0" variant="secondary" />
             </div>
           </div>
           <!-- Hero Visual -->
@@ -172,7 +171,7 @@ const sliderImages = [
             <!-- Left: Photo + Stats -->
             <div class="flex flex-col gap-40 shrink-0 md:w-387">
               <div class="w-full aspect-square md:w-363 md:h-364 rounded-lg overflow-hidden bg-background flex items-center justify-center">
-                <img src={imgPersona} alt="Mara Hellwig" class="w-full h-full object-cover" />
+                <img src={personaMara.src} alt="Mara Hellwig" class="w-full h-full object-cover" />
               </div>
               <div class="flex flex-col gap-20 text-text-900">
                 <div class="flex justify-between items-center">
@@ -198,17 +197,17 @@ const sliderImages = [
               <div class="flex flex-col gap-16">
                 <span class="font-body font-medium text-[12px] tracking-[0.96px] text-text-light">WICHTIGSTE ZIELE</span>
                 <div class="flex flex-col gap-12 font-body text-[16px] leading-26 text-text-900">
-                  <p>– Über längere Zeit am Stück konzentriert lernen</p>
-                  <p>– Den reflexhaften Griff zum Handy gar nicht erst zur Option machen</p>
-                  <p>– Trotzdem für wirkliche Notfälle erreichbar bleiben</p>
+                  <p class="flex items-center gap-10"><span class="shrink-0 w-6 h-6 rounded-full bg-primary-600"></span>Über längere Zeit am Stück konzentriert lernen</p>
+                  <p class="flex items-center gap-10"><span class="shrink-0 w-6 h-6 rounded-full bg-primary-600"></span>Den reflexhaften Griff zum Handy gar nicht erst zur Option machen</p>
+                  <p class="flex items-center gap-10"><span class="shrink-0 w-6 h-6 rounded-full bg-primary-600"></span>Trotzdem für wirkliche Notfälle erreichbar bleiben</p>
                 </div>
               </div>
               <div class="flex flex-col gap-16">
                 <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">FRUSTRATIONEN IM BESTEHENDEN TOOL</span>
                 <div class="flex flex-col gap-12 font-body text-[16px] leading-26 text-text-900">
-                  <p>– Verliert den Fokus durch unbewusstes Checken</p>
-                  <p>– Reine Sperr-Apps werden umgangen oder einfach deaktiviert</p>
-                  <p>– Vergisst im Lernstress, eine Fokusphase überhaupt zu starten</p>
+                  <p class="flex items-center gap-10"><span class="shrink-0 w-6 h-6 rounded-full bg-primary-600"></span>Verliert den Fokus durch unbewusstes Checken</p>
+                  <p class="flex items-center gap-10"><span class="shrink-0 w-6 h-6 rounded-full bg-primary-600"></span>Reine Sperr-Apps werden umgangen oder einfach deaktiviert</p>
+                  <p class="flex items-center gap-10"><span class="shrink-0 w-6 h-6 rounded-full bg-primary-600"></span>Vergisst im Lernstress, eine Fokusphase überhaupt zu starten</p>
                 </div>
               </div>
               <div class="border border-border bg-background rounded-lg p-24 md:p-32 flex flex-col gap-16">
@@ -220,7 +219,12 @@ const sliderImages = [
         </div>
 
         <!-- Picture Slider -->
-        <div class="flex flex-col gap-24">
+        <div class="flex flex-col gap-32">
+          <div class="flex flex-col gap-16">
+            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-light">PROTOTYP</span>
+            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Vom Material zum funktionsfähigen Gerät</h3>
+          </div>
+          <div class="flex flex-col gap-24">
           <div class="relative overflow-hidden rounded-xl" id="slider">
             <div class="flex transition-transform duration-400 ease-in-out" id="slider-track">
               {sliderImages.map((img) => (
@@ -246,6 +250,7 @@ const sliderImages = [
                 aria-label={`Bild ${i + 1}`}
               />
             ))}
+          </div>
           </div>
         </div>
 
@@ -430,10 +435,6 @@ const sliderImages = [
               <h2 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Ein funktionsfähiges, getestetes Detox-Gerät – vom Konzept bis zum gebauten Prototyp.</h2>
               <p class="font-body text-[16px] leading-26 text-text-light">Am Ende des Projekts stand ein eigenständiges Gerät aus Holz und Arduino-Elektronik, das Timer, LED-Status, Ton, Störungserkennung und geplante Erinnerungen über eine bewusst reduzierte Mensch-Maschine-Interaktion zusammenführt. Das Konzept wurde methodisch entwickelt, gebaut und mit echten Proband:innen auf Verständlichkeit geprüft und iteriert.</p>
             </div>
-          </div>
-          <div class="flex gap-32 items-center flex-wrap">
-            <Button label="Live Demo ansehen" href="#" variant="primary" />
-            <Button label="GitHub Repository" href="https://github.com/PixelNinja0" variant="secondary" />
           </div>
         </div>
 
