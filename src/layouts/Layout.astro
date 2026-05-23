@@ -4,8 +4,9 @@ import '../styles/global.css';
 
 interface Props {
   title?: string;
+  hideScrollTop?: boolean;
 }
-const { title = 'Liam Dahl' } = Astro.props;
+const { title = 'Liam Dahl', hideScrollTop = false } = Astro.props;
 ---
 <!doctype html>
 <html lang="de">
@@ -80,6 +81,19 @@ const { title = 'Liam Dahl' } = Astro.props;
       <slot />
     </main>
 
+    <!-- Scroll to top -->
+    {!hideScrollTop && (
+      <button
+        id="scroll-top"
+        aria-label="Nach oben scrollen"
+        class="fixed bottom-24 right-24 z-50 w-48 h-48 rounded-full bg-background border border-border flex items-center justify-center text-text-900 shadow-sm opacity-0 pointer-events-none transition-all duration-200 hover:border-text-900"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M8 13V3M3 8l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    )}
+
     <footer class="mx-20 mb-20 md:mx-80 md:mb-40 flex items-center justify-between gap-16 border border-border rounded-md px-20 py-24 md:px-80 font-body text-[13px] text-text-light">
       <span>© {new Date().getFullYear()} Liam Dahl</span>
       <div class="flex gap-16">
@@ -115,6 +129,21 @@ const { title = 'Liam Dahl' } = Astro.props;
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenu();
       });
+
+      // Scroll to top button
+      const scrollTopBtn = document.getElementById('scroll-top');
+      if (scrollTopBtn) {
+        window.addEventListener('scroll', () => {
+          const visible = window.scrollY > 300;
+          scrollTopBtn.classList.toggle('opacity-100', visible);
+          scrollTopBtn.classList.toggle('pointer-events-auto', visible);
+          scrollTopBtn.classList.toggle('opacity-0', !visible);
+          scrollTopBtn.classList.toggle('pointer-events-none', !visible);
+        }, { passive: true });
+        scrollTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
 
       // Active nav link via IntersectionObserver
       const navLinks = document.querySelectorAll<HTMLAnchorElement>('header nav a[href^="/#"], header nav a[href="/"]');
