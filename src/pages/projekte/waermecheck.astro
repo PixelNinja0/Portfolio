@@ -6,7 +6,7 @@ import mockupHero from '../../assets/images/MockupBuchung.png';
 import imgBug01 from '../../assets/images/gleicher_preis.png';
 import imgBug02 from '../../assets/images/Weiter_button_fehlt.png';
 import imgBug03 from '../../assets/images/doppelte_auswahl.png';
-const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-ab0f098ede5b";
+import imgPersona from '../../assets/images/persona_markus.png';
 ---
 
 <Layout title="WärmeCheck – Liam Dahl">
@@ -207,7 +207,7 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
             <!-- Left: Photo + Stats -->
             <div class="flex flex-col gap-40 shrink-0 md:w-387">
               <div class="w-full aspect-square md:w-369 md:h-369 rounded-lg overflow-hidden bg-background flex items-center justify-center">
-                <img src={imgPersona} alt="Markus Hoffmann" class="w-full h-full object-cover" />
+                <img src={imgPersona.src} alt="Markus Zimmermann" class="w-full h-full object-cover" />
               </div>
               <div class="flex flex-col gap-20 text-text-900">
                 <div class="flex justify-between items-center">
@@ -501,13 +501,13 @@ const imgPersona = "https://www.figma.com/api/mcp/asset/30337a46-ffbc-4452-a1bd-
         if (bar) {
           bar.classList.toggle('w-20', isActive);
           bar.classList.toggle('w-4', !isActive);
-          bar.classList.toggle('bg-text-900', isActive);
+          bar.classList.toggle('bg-primary-600', isActive);
           bar.classList.toggle('bg-text-light', !isActive);
         }
         if (text) {
           text.classList.toggle('font-semibold', isActive);
           text.classList.toggle('font-normal', !isActive);
-          text.classList.toggle('text-text-900', isActive);
+          text.classList.toggle('text-primary-600', isActive);
           text.classList.toggle('text-text-light', !isActive);
         }
       });

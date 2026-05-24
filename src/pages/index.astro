@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import mockupKachel from '../assets/images/Mockupbuchungprojekt.png';
+import greyboxTitle from '../assets/images/Greybox title.png';
 
 const skills = [
   'UI / UX Design',
@@ -171,6 +172,8 @@ const tabs = [
         year="2026"
         href="/projekte/greybox"
         layout="image-right"
+        imageSrc={greyboxTitle.src}
+        imageAlt="Greybox Prototyp"
       />
       <ProjectCard
         title="Accessible PDF Reader"
