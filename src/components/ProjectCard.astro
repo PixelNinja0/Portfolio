@@ -50,7 +50,7 @@ const linkHref = comingSoon ? undefined : href;
   </div>
 
   {layout === 'image-right' && (
-    <div class="w-full h-[180px] md:w-1/2 md:h-auto bg-border flex items-center justify-center overflow-hidden shrink-0 md:order-last">
+    <div class="w-full h-[180px] md:w-1/2 md:h-auto bg-border flex items-center justify-center overflow-hidden shrink-0 order-first md:order-last">
       {imageSrc
         ? <img src={imageSrc} alt={imageAlt} class="w-full h-full object-cover" />
         : <span class="font-heading font-semibold text-[11px] md:text-[12px] text-text-900/50 tracking-[0.66px]">[ Projekt-Bild ]</span>
