@@ -4,6 +4,7 @@ import Button from '../components/Button.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import mockupKachel from '../assets/images/Mockupbuchungprojekt.png';
 import greyboxTitle from '../assets/images/Greybox title.png';
+import aiPdfMockup from '../assets/images/ai-pdf-Mockup.png';
 
 const skills = [
   'UI / UX Design',
@@ -179,7 +180,9 @@ const tabs = [
         title="Accessible PDF Reader"
         year="2025"
         layout="image-left"
-        comingSoon
+        href="/projekte/ai-pdf-reader"
+        imageSrc={aiPdfMockup.src}
+        imageAlt="Accessible PDF Reader App Mockup"
       />
     </div>
   </section>
