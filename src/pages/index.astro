@@ -116,11 +116,11 @@ const situations = [
         </div>
 
         <!-- Skills -->
-        <div class="flex flex-col gap-32 md:gap-40 items-center w-full">
+        <div class="flex flex-col gap-32 md:gap-40 items-center w-full min-w-0">
           <h2 class="font-heading font-semibold text-[20px] md:text-[24px] text-text-900">Was ich mache</h2>
-          <div class="flex flex-wrap justify-center gap-16">
+          <div class="w-full flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-12 pb-1 [&>*]:shrink-0 [&>*]:snap-start md:flex-wrap md:overflow-visible md:justify-center">
             {skills.map((skill) => (
-              <span class="font-body text-[14px] md:text-[15px] px-16 py-8 rounded-full border border-border text-text-light">{skill}</span>
+              <span class="font-body text-[14px] md:text-[15px] px-16 py-8 rounded-full border border-border text-text-light whitespace-nowrap">{skill}</span>
             ))}
           </div>
         </div>
@@ -201,19 +201,19 @@ const situations = [
         </div>
 
         <!-- Wo ich gerade stehe -->
-        <div class="flex flex-col gap-32 md:gap-40 items-center">
+        <div class="flex flex-col gap-32 md:gap-40 items-center w-full min-w-0">
           <h3 class="font-heading font-semibold text-[20px] md:text-[24px] text-text-900 text-center">Wo ich gerade stehe</h3>
-          <div class="w-full flex items-start">
+          <div class="w-full flex items-start overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-16 pb-1 md:overflow-visible md:gap-0">
             {milestones.map((m, i) => (
-              <div class="flex-1 flex flex-col items-center gap-8 text-center">
+              <div class="flex flex-col items-center gap-8 text-center w-140 shrink-0 snap-start md:flex-1 md:w-auto md:shrink">
                 <div class="w-full flex items-center">
-                  <div class:list={['flex-1 h-px', i === 0 ? 'bg-transparent' : 'bg-border']}></div>
+                  <div class:list={['hidden md:block flex-1 h-px', i === 0 ? 'bg-transparent' : 'bg-border']}></div>
                   <span class:list={['w-10 h-10 rounded-full shrink-0', m.state === 'current' ? 'bg-primary-600' : 'bg-text-light']}></span>
-                  <div class:list={['flex-1 h-px', i === milestones.length - 1 ? 'bg-transparent' : 'bg-border']}></div>
+                  <div class:list={['hidden md:block flex-1 h-px', i === milestones.length - 1 ? 'bg-transparent' : 'bg-border']}></div>
                 </div>
                 <span class="font-body text-[12px] md:text-[13px] text-text-light">{m.period}</span>
                 <span class:list={[
-                  'font-body text-[12px] md:text-[13px] px-12 py-6 rounded-full border text-center',
+                  'font-body text-[12px] md:text-[13px] px-12 py-6 rounded-full border text-center whitespace-nowrap',
                   m.state === 'current' ? 'border-primary-600 text-primary-600' : 'border-border text-text-light',
                 ]}>
                   {m.label}

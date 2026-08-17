@@ -145,23 +145,24 @@ const ablaufSteps = [
                 </div>
               ))}
             </div>
-            <!-- Prev / Next -->
-            <button id="slider-prev" aria-label="Vorheriges Bild" class="absolute left-16 top-1/2 -translate-y-1/2 w-40 h-40 bg-background border border-border rounded-full flex items-center justify-center text-text-900 hover:bg-border transition-colors">
+          </div>
+          <!-- Prev / Dots / Next -->
+          <div class="flex items-center justify-center gap-16">
+            <button id="slider-prev" aria-label="Vorheriges Bild" class="shrink-0 w-40 h-40 bg-background border border-border rounded-full flex items-center justify-center text-text-900 hover:bg-border transition-colors">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <button id="slider-next" aria-label="Nächstes Bild" class="absolute right-16 top-1/2 -translate-y-1/2 w-40 h-40 bg-background border border-border rounded-full flex items-center justify-center text-text-900 hover:bg-border transition-colors">
+            <div class="flex justify-center gap-8" id="slider-dots">
+              {sliderImages.map((_, i) => (
+                <button
+                  class={`slider-dot w-8 h-8 rounded-full border border-border transition-colors ${i === 0 ? 'bg-text-900' : 'bg-border'}`}
+                  data-index={i}
+                  aria-label={`Bild ${i + 1}`}
+                />
+              ))}
+            </div>
+            <button id="slider-next" aria-label="Nächstes Bild" class="shrink-0 w-40 h-40 bg-background border border-border rounded-full flex items-center justify-center text-text-900 hover:bg-border transition-colors">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-          </div>
-          <!-- Dots -->
-          <div class="flex justify-center gap-8" id="slider-dots">
-            {sliderImages.map((_, i) => (
-              <button
-                class={`slider-dot w-8 h-8 rounded-full border border-border transition-colors ${i === 0 ? 'bg-text-900' : 'bg-border'}`}
-                data-index={i}
-                aria-label={`Bild ${i + 1}`}
-              />
-            ))}
           </div>
         </div>
 

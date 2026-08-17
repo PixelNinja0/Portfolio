@@ -26,6 +26,11 @@
   --font-heading: "Manrope", sans-serif;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 html {
   scroll-padding-top: 72px;
 }
