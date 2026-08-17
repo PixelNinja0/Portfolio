@@ -2,118 +2,144 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import SidebarNav from '../components/SidebarNav.astro';
+import SectionEyebrow from '../components/SectionEyebrow.astro';
 import mockupKachel from '../assets/images/MockupBuchung.png';
 import greyboxTitle from '../assets/images/Greybox title.png';
 import aiPdfMockup from '../assets/images/ai-pdf-Mockup.png';
+import uebermichpic from '../assets/images/uebermichpic.jpg';
+import imgArbeitszeugnis from '../assets/images/Arbeitszeugniss1.png';
+import imgAusbildungszeugnis from '../assets/images/Ausbildungszeugniss.png';
+import imgReZertifikat from '../assets/images/RE_Zertifikat.png';
 
 const skills = [
-  'UI / UX Design',
-  'UX Research',
-  'Product Strategy',
-  'Technische Umsetzung',
+  'Anforderungsmanagement',
+  'UI/UX Design',
+  'Mensch-Maschinen-Interaktion',
+  'Usability Evaluation',
+  'Accessibility Engineering',
 ];
 
-const photoSrc = 'https://www.figma.com/api/mcp/asset/3cf6ae73-fae3-4902-92ec-bb12a2c1c650';
+const photoSrc = uebermichpic.src;
 
-const tabs = [
+const aboutTabs = [
+  { id: 'ueber-mich', label: 'Über mich' },
+  { id: 'erfahrung', label: 'Erfahrung' },
+  { id: 'ausbildung', label: 'Ausbildung' },
+  { id: 'zertifikate', label: 'Zertifikate' },
+];
+
+type ExperienceEntry = { title: string; institution: string; period: string; image?: string };
+
+const erfahrungEntries: ExperienceEntry[] = [
+  { title: 'Praktikum Spiegel Institut UI/UX Design', institution: 'Spiegel-Institut Ingolstadt', period: '2026 (5 Monate Berufserfahrung)' },
+  { title: 'Konstruktionsmechaniker', institution: 'Lutz Aufzüge GmbH', period: '2017 – 2021 (4 Jahre Berufserfahrung)', image: imgArbeitszeugnis.src },
+];
+
+const ausbildungEntries: ExperienceEntry[] = [
+  { title: 'Ingenieurpsychologie B.Sc.', institution: 'Hochschule Furtwangen', period: '2022 – 2027' },
+  { title: 'Ausbildung zum Konstruktionsmechaniker', institution: 'BS04 Berufsschule Hamburg', period: '2017 – 2021', image: imgAusbildungszeugnis.src },
+];
+
+const zertifikateEntries: ExperienceEntry[] = [
+  { title: 'CPRE FL_Syll_3.0 – IREB certified Professional for Requirements Engineering', institution: 'IREB', period: '2026', image: imgReZertifikat.src },
+  { title: 'Robotik', institution: 'Hochschule Furtwangen', period: '2025' },
+];
+
+const entryPanels = [
+  { id: 'erfahrung', entries: erfahrungEntries },
+  { id: 'ausbildung', entries: ausbildungEntries },
+  { id: 'zertifikate', entries: zertifikateEntries },
+];
+
+type Milestone = { period: string; label: string; state: 'past' | 'current' | 'future' };
+
+const milestones: Milestone[] = [
+  { period: '2017 – 21', label: 'Werkstatt', state: 'past' },
+  { period: '2022', label: 'Studium angefangen', state: 'past' },
+  { period: '2026', label: 'Praktikum', state: 'past' },
+  { period: 'jetzt', label: 'Werkstudent & Thesis', state: 'current' },
+  { period: 'danach', label: 'noch offen', state: 'future' },
+];
+
+const situations = [
   {
-    id: 'erfahrung',
-    label: 'Erfahrung',
-    entries: [
-      { period: 'April – August 2026', title: 'Praktikum Spielgelinstitut UI/UX Design' },
-      { period: '2017 – 2021', title: 'Konstruktionsmechaniker Lutz Aufzüge' },
-    ],
+    label: 'Situation 1',
+    quote: 'Nutzer brechen bei uns ab und wir wissen nicht, wo.',
+    body: 'Ich analysiere den bestehenden Ablauf, finde die Stellen, an denen es hakt, und belege sie mit einem Test.',
+    linkLabel: 'Wärmecheck',
+    href: '/projekte/waermecheck',
   },
   {
-    id: 'ausbildung',
-    label: 'Ausbildung',
-    entries: [
-      { period: '2022 – 2026', title: 'Ingenieurpsychologie B.Sc.' },
-      { period: '2017 – 2021', title: 'Ausbildung Konstruktionsmechaniker' },
-    ],
+    label: 'Situation 2',
+    quote: 'Wir haben eine Idee für ein Gerät, aber keine Bedienlogik.',
+    body: 'Ich entwickle das Bedienkonzept, baue einen Prototyp und teste ihn mit echten Nutzern.',
+    linkLabel: 'Greybox',
+    href: '/projekte/greybox',
   },
   {
-    id: 'zertifikate',
-    label: 'Zertifikate',
-    entries: [] as { period: string; title: string }[],
+    label: 'Situation 3',
+    quote: 'Unser Produkt ist für viele Menschen nicht benutzbar.',
+    body: 'Ich prüfe auf Barrierefreiheit, priorisiere die Befunde und setze sie im Frontend um.',
+    linkLabel: 'PDF Reader',
+    href: '/projekte/ai-pdf-reader',
   },
 ];
 ---
 
 <Layout title="Liam Dahl — UX Research & Product Optimization">
 
-  <!-- ── Hero ── -->
-  <section class="px-20 py-80 md:px-80 md:py-100 flex flex-col gap-56 md:gap-80 items-center">
+  <div class="flex flex-col md:flex-row md:items-start mx-20 md:mx-80 py-40 md:py-64 gap-40 md:gap-48">
 
-    <div class="flex flex-col gap-32 md:gap-40 items-center text-center w-full max-w-[860px]">
-      <div class="flex flex-col gap-20 md:gap-24 items-center w-full">
-        <h1 class="font-heading font-semibold text-[30px] leading-[40px] tracking-[-0.9px] md:text-[48px] md:leading-[53px] md:tracking-[-1.44px] bg-gradient-to-r from-[#9d9d9d] to-[#2fa37a] bg-clip-text text-transparent">
-          Ich Optimiere Komplexe Systeme für Menschen
-        </h1>
-        <p class="font-heading font-semibold text-[18px] leading-[25px] md:text-[26px] md:leading-[28px] text-primary-600">
-          Von der Analyse über UX bis zur technischen Umsetzung<br />
-          für effizientere Prozesse und bessere Bedienbarkeit.
-        </p>
-      </div>
-      <div class="flex gap-20 md:gap-24 items-center">
-        <Button label="Zu den Projekten" href="#projekte" variant="primary" />
-        <Button label="Kontaktiere mich" href="#kontakt" variant="secondary" />
-      </div>
-    </div>
+    <SidebarNav />
 
-    <!-- Skill Tiles -->
-    <div class="flex flex-wrap justify-center gap-8 md:gap-24 md:flex-nowrap w-full">
-      {skills.map((skill) => (
-        <div class="relative flex items-center justify-center w-[165px] h-76 md:w-[301px] md:h-138 p-24 rounded-[10px] border border-border bg-background">
-          <span class="font-heading font-semibold text-[14px] leading-[20px] md:text-[22px] md:leading-[30px] md:tracking-[-0.22px] text-text-light text-center">
-            {skill}
-          </span>
+    <div class="flex-1 flex flex-col gap-80 md:gap-100 min-w-0">
+
+      <!-- ── Hero ── -->
+      <section id="home" class="flex flex-col gap-56 md:gap-80 items-center">
+
+        <div class="flex flex-col gap-32 md:gap-40 items-center text-center w-full max-w-860">
+          <div class="flex flex-col gap-20 md:gap-24 items-center w-full">
+            <p class="font-heading font-medium text-[18px] md:text-[24px] text-text-900">Hi ich bin Liam</p>
+            <h1 class="font-heading font-semibold text-[30px] leading-40 tracking-[-0.9px] md:text-[48px] md:leading-53 md:tracking-[-1.44px] text-text-900">
+              ich mache komplizierte Technik bedienbar.
+            </h1>
+            <p class="font-body text-[16px] leading-26 md:text-[18px] md:leading-28 text-text-light">
+              Ingenieurpsychologie, vier Jahre Werkstatt.<br />
+              Von der Analyse bis zum fertigen Frontend.
+            </p>
+          </div>
+          <div class="flex gap-20 md:gap-24 items-center">
+            <Button label="Zu den Projekten" href="#projekte" variant="primary" />
+            <Button label="Kontaktiere mich" href="#kontakt" variant="secondary" />
+          </div>
         </div>
-      ))}
-    </div>
 
-  </section>
+        <!-- Skills -->
+        <div class="flex flex-col gap-32 md:gap-40 items-center w-full">
+          <h2 class="font-heading font-semibold text-[20px] md:text-[24px] text-text-900">Was ich mache</h2>
+          <div class="flex flex-wrap justify-center gap-16">
+            {skills.map((skill) => (
+              <span class="font-body text-[14px] md:text-[15px] px-16 py-8 rounded-full border border-border text-text-light">{skill}</span>
+            ))}
+          </div>
+        </div>
 
-  <!-- ── About ── -->
-  <section id="about" class="px-20 py-80 md:px-80 md:py-100 border-t border-border">
-    <div class="flex flex-col md:flex-row gap-48 md:gap-64 items-start w-full max-w-7xl mx-auto">
+      </section>
 
-      <!-- Photo -->
-      <div class="w-213 h-319 md:w-367 md:h-550 shrink-0 rounded-md overflow-hidden mx-auto md:mx-0">
-        <img
-          src={photoSrc}
-          alt="Liam Dahl"
-          class="w-full h-full object-cover"
-        />
-      </div>
+      <!-- ── About ── -->
+      <section id="about" class="flex flex-col gap-48 md:gap-64">
+        <SectionEyebrow number="02" label="Über mich" title="Wer ich bin" />
 
-      <!-- Right Column -->
-      <div class="flex flex-col gap-48 md:gap-64 flex-1 min-w-0">
-
-        <!-- Bio -->
-        <p class="font-body font-normal text-[16px] leading-26 text-text-900 text-center md:text-left md:text-[15px] md:leading-20 md:tracking-[0.5px]">
-          Hey ich bin Liam.<br />
-          Ich beschäftige mich damit, komplexe Systeme einfacher und effizienter zu machen.
-          Durch meinen Hintergrund in Ingenieurpsychologie verbinde ich technisches Verständnis
-          mit Wissen über menschliches Verhalten. Mich interessiert nicht nur, wie etwas aussieht –
-          sondern vor allem, wie es genutzt wird und wo Probleme entstehen. In meinen Projekten
-          analysiere ich bestehende Systeme, identifiziere Schwachstellen und entwickle Lösungen,
-          die sowohl funktional als auch intuitiv sind. Dabei arbeite ich strukturiert von der
-          Recherche über die Gestaltung bis hin zur technischen Umsetzung. Mein Fokus liegt auf
-          technischen und handwerklichen Kontexten, überall dort, wo Systeme komplex sind und
-          zuverlässig funktionieren müssen. Mein Ziel ist es, Produkte und Prozesse so zu gestalten,
-          dass sie für Menschen wirklich funktionieren.
-        </p>
-
-        <!-- Tabs -->
         <div>
+          <!-- Tabs -->
           <div role="tablist" class="flex gap-24 md:gap-32 border-b border-border">
-            {tabs.map((tab, i) => (
+            {aboutTabs.map((tab, i) => (
               <button
                 role="tab"
                 aria-selected={i === 0 ? 'true' : 'false'}
                 data-target={tab.id}
-                class="pb-12 font-heading font-semibold text-[16px] md:text-[20px] leading-20 border-b-2 -mb-px transition-colors text-text-light border-transparent aria-selected:border-primary-600 aria-selected:text-text-900"
+                class="pb-12 font-heading font-semibold text-[15px] md:text-[16px] leading-20 border-b-2 -mb-px transition-colors text-text-light border-transparent aria-selected:border-primary-600 aria-selected:text-text-900"
               >
                 {tab.label}
               </button>
@@ -121,141 +147,227 @@ const tabs = [
           </div>
 
           <div class="pt-32 md:pt-40">
-            {tabs.map((tab, i) => (
-              <div id={tab.id} role="tabpanel" hidden={i !== 0 || undefined}>
-                {tab.entries.length > 0 ? (
-                  <div class="flex flex-col">
-                    {tab.entries.map((entry, j) => (
-                      <div class="flex gap-16 items-start">
-                        <div class="flex flex-col items-center w-12 shrink-0 pt-5">
-                          <div class="w-10 h-10 rounded-full bg-primary-600 shrink-0"></div>
-                          {j < tab.entries.length - 1 && (
-                            <div class="w-px bg-border flex-1 mt-8 min-h-40"></div>
-                          )}
-                        </div>
-                        <div class="pb-32">
-                          <p class="font-body font-semibold text-[14px] md:text-[15px] leading-20 text-primary-600">
-                            {entry.period}
-                          </p>
-                          <p class="font-body font-semibold text-[14px] md:text-[15px] leading-20 text-text-900 mt-4">
-                            {entry.title}
-                          </p>
-                        </div>
+            <!-- Über mich -->
+            <div id="ueber-mich" role="tabpanel" class="transition-opacity duration-200">
+              <div class="flex flex-col md:flex-row gap-32 md:gap-48 items-start">
+                <div class="w-213 h-319 md:w-280 md:h-420 shrink-0 rounded-md overflow-hidden mx-auto md:mx-0">
+                  <img src={photoSrc} alt="Liam Dahl" class="w-full h-full object-cover" />
+                </div>
+                <p class="font-body font-normal text-[16px] leading-26 text-text-900 text-center md:text-left md:text-[17px] md:leading-28 md:tracking-[0.2px]">
+                  Hey ich bin Liam.<br />
+                  Ich beschäftige mich damit, komplexe Systeme einfacher und effizienter zu machen.
+                  Durch meinen Hintergrund in Ingenieurpsychologie verbinde ich technisches Verständnis
+                  mit Wissen über menschliches Verhalten. Mich interessiert nicht nur, wie etwas aussieht –
+                  sondern vor allem, wie es genutzt wird und wo Probleme entstehen. In meinen Projekten
+                  analysiere ich bestehende Systeme, identifiziere Schwachstellen und entwickle Lösungen,
+                  die sowohl funktional als auch intuitiv sind. Dabei arbeite ich strukturiert von der
+                  Recherche über die Gestaltung bis hin zur technischen Umsetzung. Mein Fokus liegt auf
+                  technischen und handwerklichen Kontexten, überall dort, wo Systeme komplex sind und
+                  zuverlässig funktionieren müssen. Mein Ziel ist es, Produkte und Prozesse so zu gestalten,
+                  dass sie für Menschen wirklich funktionieren.
+                </p>
+              </div>
+            </div>
+
+            <!-- Erfahrung / Ausbildung / Zertifikate -->
+            {entryPanels.map(({ id, entries }) => (
+              <div id={id} role="tabpanel" class="transition-opacity duration-200" hidden>
+                <div class="flex flex-col gap-24">
+                  {entries.map((entry) => (
+                    <div class="flex gap-16 items-start">
+                      <button
+                        type="button"
+                        class="entry-image-trigger w-90 h-90 rounded-md bg-primary-600 shrink-0 flex items-center justify-center text-white hover:bg-primary-700 transition-colors"
+                        data-img={entry.image ?? ''}
+                        data-title={entry.title}
+                        aria-label={`Bild anzeigen: ${entry.title}`}
+                      >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                      </button>
+                      <div>
+                        <p class="font-body font-semibold text-[15px] leading-20 text-text-900">{entry.title}</p>
+                        <p class="font-body text-[14px] leading-20 text-text-light mt-4">{entry.institution}</p>
+                        <p class="font-body font-medium text-[13px] leading-20 text-primary-600 mt-4">{entry.period}</p>
                       </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p class="font-body text-[14px] text-text-light">Noch keine Einträge vorhanden.</p>
-                )}
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
+        <!-- Wo ich gerade stehe -->
+        <div class="flex flex-col gap-32 md:gap-40 items-center">
+          <h3 class="font-heading font-semibold text-[20px] md:text-[24px] text-text-900 text-center">Wo ich gerade stehe</h3>
+          <div class="w-full flex items-start">
+            {milestones.map((m, i) => (
+              <div class="flex-1 flex flex-col items-center gap-8 text-center">
+                <div class="w-full flex items-center">
+                  <div class:list={['flex-1 h-px', i === 0 ? 'bg-transparent' : 'bg-border']}></div>
+                  <span class:list={['w-10 h-10 rounded-full shrink-0', m.state === 'current' ? 'bg-primary-600' : 'bg-text-light']}></span>
+                  <div class:list={['flex-1 h-px', i === milestones.length - 1 ? 'bg-transparent' : 'bg-border']}></div>
+                </div>
+                <span class="font-body text-[12px] md:text-[13px] text-text-light">{m.period}</span>
+                <span class:list={[
+                  'font-body text-[12px] md:text-[13px] px-12 py-6 rounded-full border text-center',
+                  m.state === 'current' ? 'border-primary-600 text-primary-600' : 'border-border text-text-light',
+                ]}>
+                  {m.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      <!-- ── Projekte ── -->
+      <section id="projekte" class="flex flex-col gap-48 md:gap-64">
+        <SectionEyebrow number="03" label="Meine Projekte" title="Was ich so gemacht habe" />
+        <div class="flex flex-col gap-16 md:gap-24">
+          <ProjectCard
+            title="Buchungssystem Redesign"
+            year="2026"
+            href="/projekte/waermecheck"
+            imageSrc={mockupKachel.src}
+            imageAlt="WärmeCheck Buchungssystem Mockup"
+            layout="image-left"
+          />
+          <ProjectCard
+            title="Greybox – Smartphone Detox"
+            year="2026"
+            href="/projekte/greybox"
+            layout="image-right"
+            imageSrc={greyboxTitle.src}
+            imageAlt="Greybox Prototyp"
+          />
+          <ProjectCard
+            title="Accessible PDF Reader"
+            year="2025"
+            layout="image-left"
+            href="/projekte/ai-pdf-reader"
+            imageSrc={aiPdfMockup.src}
+            imageAlt="Accessible PDF Reader App Mockup"
+          />
+        </div>
+      </section>
 
-  <!-- ── Projekte ── -->
-  <section id="projekte" class="px-20 py-80 md:px-80 md:py-100 border-t border-border">
-    <div class="flex flex-col gap-16 md:gap-24 w-full max-w-7xl mx-auto">
-      <ProjectCard
-        title="Buchungssystem Redesign"
-        year="2026"
-        href="/projekte/waermecheck"
-        imageSrc={mockupKachel.src}
-        imageAlt="WärmeCheck Buchungssystem Mockup"
-        layout="image-left"
-      />
-      <ProjectCard
-        title="Greybox – Smartphone Detox"
-        year="2026"
-        href="/projekte/greybox"
-        layout="image-right"
-        imageSrc={greyboxTitle.src}
-        imageAlt="Greybox Prototyp"
-      />
-      <ProjectCard
-        title="Accessible PDF Reader"
-        year="2025"
-        layout="image-left"
-        href="/projekte/ai-pdf-reader"
-        imageSrc={aiPdfMockup.src}
-        imageAlt="Accessible PDF Reader App Mockup"
-      />
-    </div>
-  </section>
+      <!-- ── Wo ich helfen kann ── -->
+      <section id="wo-ich-helfen-kann" class="flex flex-col gap-48 md:gap-64">
+        <SectionEyebrow number="04" label="Wo ich helfen kann" title="Was kann ich für dich tun" />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+          {situations.map((s, i) => (
+            <div class:list={['flex flex-col gap-16 border border-border rounded-md p-24 md:p-32', i === 2 && 'md:col-span-2']}>
+              <span class="font-body font-medium text-[11px] tracking-[0.88px] text-text-light uppercase">{s.label}</span>
+              <h3 class="font-heading font-semibold text-[18px] md:text-[20px] leading-snug text-text-900">„{s.quote}"</h3>
+              <p class="font-body text-[14px] md:text-[15px] leading-24 text-text-light">{s.body}</p>
+              <a href={s.href} class="font-body font-medium text-[14px] text-primary-600 hover:opacity-80 transition-opacity mt-8">
+                {s.linkLabel} →
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
 
-  <!-- ── Kontakt ── -->
-  <section id="kontakt" class="px-20 py-80 md:px-80 md:py-100 border-t border-border">
-    <div class="flex flex-col md:flex-row md:items-start gap-24 md:gap-56 max-w-7xl mx-auto">
-
-      <!-- Heading + Social: mobile top, desktop right -->
-      <div class="md:order-2 md:w-440 md:shrink-0 flex flex-col gap-16 md:gap-24">
-        <div class="flex flex-col gap-16">
-          <h2 class="font-heading font-medium text-[22px] leading-29 tracking-[-0.22px] md:font-semibold md:text-[32px] md:leading-38 md:tracking-[-0.64px] text-text-900">
-            Kontaktiere <span class="text-primary-500">mich</span>
-          </h2>
+      <!-- ── Kontakt ── -->
+      <section id="kontakt" class="flex flex-col gap-48 md:gap-64">
+        <div class="flex flex-col gap-24">
+          <SectionEyebrow number="05" label="Kontaktiere mich" title="Nimm den Kontakt mit mir auf" />
           <p class="font-body text-[16px] leading-26 text-text-900">
             Benutze dafür auch gerne meine sozialen Medien
           </p>
+          <div class="flex gap-20 items-center">
+            <a href="https://www.linkedin.com/in/liam-dahl-a2b288335" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-text-900 hover:text-primary-600 transition-colors">
+              <svg class="w-26 h-26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a href="https://github.com/PixelNinja0" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-text-900 hover:text-primary-600 transition-colors">
+              <svg class="w-26 h-26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-text-900 hover:text-primary-600 transition-colors">
+              <svg class="w-26 h-26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </a>
+          </div>
         </div>
-        <div class="flex gap-20 items-center">
-          <a href="https://www.linkedin.com/in/liam-dahl-a2b288335" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-text-900 hover:text-primary-600 transition-colors">
-            <svg class="w-26 h-26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
-          <a href="https://github.com/PixelNinja0" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-text-900 hover:text-primary-600 transition-colors">
-            <svg class="w-26 h-26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-            </svg>
-          </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-text-900 hover:text-primary-600 transition-colors">
-            <svg class="w-26 h-26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
 
-      <!-- Form: mobile bottom, desktop left -->
-      <form
-        method="POST"
-        action="https://formspree.io/f/xykvedvq"
-        class="md:order-1 flex-1 flex flex-col gap-16"
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          required
-          class="w-full h-54 md:h-56 px-20 py-16 bg-background border border-border rounded-md font-body text-[16px] leading-26 text-text-900 placeholder:text-text-light focus:outline-none focus:border-primary-600 transition-colors appearance-none"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          required
-          class="w-full h-54 md:h-56 px-20 py-16 bg-background border border-border rounded-md font-body text-[16px] leading-26 text-text-900 placeholder:text-text-light focus:outline-none focus:border-primary-600 transition-colors appearance-none"
-        />
-        <textarea
-          name="message"
-          placeholder="Deine Nachricht"
-          required
-          class="w-full h-198 md:h-160 px-20 py-16 bg-background border border-border rounded-md font-body text-[16px] leading-26 text-text-900 placeholder:text-text-light focus:outline-none focus:border-primary-600 transition-colors resize-none"
-        ></textarea>
-        <button
-          type="submit"
-          class="self-start bg-primary-600 text-background font-body font-medium text-[15px] px-24 py-16 rounded-md hover:opacity-80 transition-opacity"
+        <form
+          method="POST"
+          action="https://formspree.io/f/xykvedvq"
+          class="flex flex-col gap-16"
         >
-          Senden
-        </button>
-      </form>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            required
+            class="w-full h-54 md:h-56 px-20 py-16 bg-background border border-border rounded-md font-body text-[16px] leading-26 text-text-900 placeholder:text-text-light focus:outline-none focus:border-primary-600 transition-colors appearance-none"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            class="w-full h-54 md:h-56 px-20 py-16 bg-background border border-border rounded-md font-body text-[16px] leading-26 text-text-900 placeholder:text-text-light focus:outline-none focus:border-primary-600 transition-colors appearance-none"
+          />
+          <textarea
+            name="message"
+            placeholder="Deine Nachricht"
+            required
+            class="w-full h-198 md:h-160 px-20 py-16 bg-background border border-border rounded-md font-body text-[16px] leading-26 text-text-900 placeholder:text-text-light focus:outline-none focus:border-primary-600 transition-colors resize-none"
+          ></textarea>
+          <button
+            type="submit"
+            class="self-start bg-primary-600 text-background font-body font-medium text-[15px] px-24 py-16 rounded-md hover:opacity-80 transition-opacity"
+          >
+            Senden
+          </button>
+        </form>
+      </section>
 
     </div>
-  </section>
+  </div>
+
+  <!-- Entry Image Overlay -->
+  <div
+    id="entry-image-overlay"
+    class="hidden fixed inset-0 z-50"
+    style="background: rgba(31,42,40,0.65);"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="entry-image-overlay-title"
+  >
+    <div class="flex items-center justify-center w-full h-full p-20 md:p-40">
+      <div class="relative w-full max-w-2xl bg-background rounded-lg overflow-hidden max-h-[90vh] flex flex-col">
+        <div class="flex items-center justify-between gap-16 px-24 py-20 md:px-32 md:py-24 border-b border-border shrink-0">
+          <h2
+            id="entry-image-overlay-title"
+            class="font-heading font-semibold text-[15px] md:text-[18px] text-text-900 leading-snug"
+          ></h2>
+          <button
+            id="entry-image-overlay-close"
+            class="shrink-0 w-32 h-32 flex items-center justify-center text-text-light hover:text-text-900 transition-colors"
+            aria-label="Overlay schließen"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="overflow-y-auto p-24 md:p-32">
+          <img id="entry-image-overlay-img" src="" alt="" class="w-full rounded border border-border object-contain hidden" />
+          <p id="entry-image-overlay-placeholder" class="font-body text-[14px] text-text-light text-center py-40 hidden">Dieses Dokument ist momentan nicht verfügbar</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </Layout>
 
@@ -265,14 +377,76 @@ const tabs = [
 
   tabBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      tabBtns.forEach((b) => b.setAttribute('aria-selected', 'false'));
-      tabPanels.forEach((p) => { p.hidden = true; });
-      btn.setAttribute('aria-selected', 'true');
       const target = btn.dataset.target;
-      if (target) {
-        const panel = document.getElementById(target);
-        if (panel) panel.hidden = false;
+      const nextPanel = target ? document.getElementById(target) : null;
+      const currentPanel = Array.from(tabPanels).find((p) => !p.hidden);
+      if (!nextPanel || nextPanel === currentPanel) return;
+
+      tabBtns.forEach((b) => b.setAttribute('aria-selected', 'false'));
+      btn.setAttribute('aria-selected', 'true');
+
+      const swap = () => {
+        tabPanels.forEach((p) => { p.hidden = true; });
+        nextPanel.hidden = false;
+        nextPanel.classList.add('opacity-0');
+        requestAnimationFrame(() => {
+          nextPanel.classList.remove('opacity-0');
+        });
+      };
+
+      if (currentPanel) {
+        currentPanel.classList.add('opacity-0');
+        setTimeout(swap, 150);
+      } else {
+        swap();
       }
     });
+  });
+
+  // Entry Image Overlay
+  const entryOverlay = document.getElementById('entry-image-overlay');
+  const entryOverlayClose = document.getElementById('entry-image-overlay-close');
+  const entryOverlayTitle = document.getElementById('entry-image-overlay-title');
+  const entryOverlayImg = document.getElementById('entry-image-overlay-img') as HTMLImageElement | null;
+  const entryOverlayPlaceholder = document.getElementById('entry-image-overlay-placeholder');
+
+  function openEntryOverlay(title: string, imgSrc: string) {
+    if (entryOverlayTitle) entryOverlayTitle.textContent = title;
+    if (imgSrc) {
+      if (entryOverlayImg) {
+        entryOverlayImg.src = imgSrc;
+        entryOverlayImg.alt = title;
+        entryOverlayImg.classList.remove('hidden');
+      }
+      entryOverlayPlaceholder?.classList.add('hidden');
+    } else {
+      entryOverlayImg?.classList.add('hidden');
+      entryOverlayPlaceholder?.classList.remove('hidden');
+    }
+    entryOverlay?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEntryOverlay() {
+    entryOverlay?.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.entry-image-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const img = btn.dataset.img ?? '';
+      const title = btn.dataset.title ?? '';
+      openEntryOverlay(title, img);
+    });
+  });
+
+  entryOverlayClose?.addEventListener('click', closeEntryOverlay);
+
+  entryOverlay?.addEventListener('click', (e) => {
+    if (e.target === entryOverlay) closeEntryOverlay();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !entryOverlay?.classList.contains('hidden')) closeEntryOverlay();
   });
 </script>

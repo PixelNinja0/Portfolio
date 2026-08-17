@@ -4,9 +4,23 @@ import '../styles/global.css';
 
 interface Props {
   title?: string;
+  description?: string;
   hideScrollTop?: boolean;
 }
-const { title = 'Liam Dahl', hideScrollTop = false } = Astro.props;
+
+const DEFAULT_DESCRIPTION =
+  'Liam Dahl – UX Research & Product Optimization. Ingenieurpsychologe mit ' +
+  'handwerklichem Hintergrund als Konstruktionsmechaniker. Ich analysiere komplexe ' +
+  'technische Systeme und mache sie bedienbar – von der Research bis zum Frontend.';
+
+const {
+  title = 'Liam Dahl',
+  description = DEFAULT_DESCRIPTION,
+  hideScrollTop = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://liamdahl.com');
+const ogImage = new URL('/og-image.png', Astro.site ?? 'https://liamdahl.com');
 ---
 <!doctype html>
 <html lang="de">
@@ -16,7 +30,27 @@ const { title = 'Liam Dahl', hideScrollTop = false } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Liam Dahl" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={ogImage.href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage.href} />
   </head>
   <body class="bg-background text-text-900 font-body">
 
@@ -31,13 +65,14 @@ const { title = 'Liam Dahl', hideScrollTop = false } = Astro.props;
         </span>
       </div>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex gap-32 font-body font-medium text-[15px] text-text-900">
-        <a href="/" class="hover:text-primary-600 transition-colors">Home</a>
-        <a href="/#about" class="hover:text-primary-600 transition-colors">About</a>
-        <a href="/#projekte" class="hover:text-primary-600 transition-colors">Projekte</a>
-        <a href="/#kontakt" class="hover:text-primary-600 transition-colors">Kontakt</a>
-      </nav>
+      <!-- Desktop: back to start -->
+      <a
+        href="/"
+        id="back-to-start"
+        class="hidden md:block font-body text-[13px] text-text-light hover:text-primary-600 transition-colors"
+      >
+        Zum Start zurück
+      </a>
 
       <!-- Burger Button (mobile only) -->
       <button
@@ -73,6 +108,7 @@ const { title = 'Liam Dahl', hideScrollTop = false } = Astro.props;
         <a href="/" class="hover:text-primary-600 transition-colors">Home</a>
         <a href="/#about" class="hover:text-primary-600 transition-colors">About</a>
         <a href="/#projekte" class="hover:text-primary-600 transition-colors">Projekte</a>
+        <a href="/#wo-ich-helfen-kann" class="hover:text-primary-600 transition-colors">Wo ich helfen kann</a>
         <a href="/#kontakt" class="hover:text-primary-600 transition-colors">Kontakt</a>
       </nav>
     </div>
@@ -122,6 +158,13 @@ const { title = 'Liam Dahl', hideScrollTop = false } = Astro.props;
       burger?.addEventListener('click', openMenu);
       closeBtn?.addEventListener('click', closeMenu);
 
+      document.getElementById('back-to-start')?.addEventListener('click', (e) => {
+        if (window.location.pathname === '/') {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+
       overlay?.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', closeMenu);
       });
@@ -143,41 +186,6 @@ const { title = 'Liam Dahl', hideScrollTop = false } = Astro.props;
         scrollTopBtn.addEventListener('click', () => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-      }
-
-      // Active nav link via IntersectionObserver
-      const navLinks = document.querySelectorAll<HTMLAnchorElement>('header nav a[href^="/#"], header nav a[href="/"]');
-
-      const sectionMap = new Map<string, HTMLAnchorElement[]>();
-      navLinks.forEach((link) => {
-        const hash = link.getAttribute('href')?.replace('/', '') || '#';
-        const id = hash === '#' ? '' : hash.slice(1);
-        const key = id || '__home__';
-        if (!sectionMap.has(key)) sectionMap.set(key, []);
-        sectionMap.get(key)!.push(link);
-      });
-
-      function setActive(id: string) {
-        navLinks.forEach((l) => l.classList.remove('text-primary-600'));
-        const key = id || '__home__';
-        sectionMap.get(key)?.forEach((l) => l.classList.add('text-primary-600'));
-      }
-
-      const sections = document.querySelectorAll<HTMLElement>('section[id], main > section:not([id])');
-
-      if (sections.length > 0) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                setActive((entry.target as HTMLElement).id);
-              }
-            });
-          },
-          { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
-        );
-
-        sections.forEach((s) => observer.observe(s));
       }
     </script>
   </body>

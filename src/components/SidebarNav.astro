@@ -1,0 +1,59 @@
+---
+const items = [
+  { href: '#home', section: 'home', label: '01 - Home' },
+  { href: '#about', section: 'about', label: '02 - Über mich' },
+  { href: '#projekte', section: 'projekte', label: '03 - Meine Projekte' },
+  { href: '#wo-ich-helfen-kann', section: 'wo-ich-helfen-kann', label: '04 - Wo ich helfen kann' },
+  { href: '#kontakt', section: 'kontakt', label: '05 - Kontaktiere mich' },
+];
+---
+
+<aside class="hidden md:block sticky top-139 shrink-0 w-240 border border-border rounded-lg px-24 py-32 self-start">
+  <span class="block font-body font-medium text-[11px] tracking-[0.88px] text-text-light mb-24">ÜBERBLICK</span>
+  <nav class="flex flex-col gap-8">
+    {items.map((item) => (
+      <a href={item.href} data-section={item.section} class="side-nav-link flex items-center gap-12 py-8">
+        <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
+        <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">{item.label}</span>
+      </a>
+    ))}
+  </nav>
+</aside>
+
+<script>
+  const sideLinks = document.querySelectorAll<HTMLAnchorElement>('.side-nav-link');
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+
+  function setSideActive(id: string) {
+    sideLinks.forEach((link) => {
+      const isActive = link.dataset.section === id;
+      const bar = link.querySelector<HTMLElement>('[data-bar]');
+      const text = link.querySelector<HTMLElement>('[data-text]');
+      if (bar) {
+        bar.classList.toggle('w-20', isActive);
+        bar.classList.toggle('w-4', !isActive);
+        bar.classList.toggle('bg-primary-600', isActive);
+        bar.classList.toggle('bg-text-light', !isActive);
+      }
+      if (text) {
+        text.classList.toggle('font-semibold', isActive);
+        text.classList.toggle('font-normal', !isActive);
+        text.classList.toggle('text-primary-600', isActive);
+        text.classList.toggle('text-text-light', !isActive);
+      }
+    });
+  }
+
+  if (sections.length > 0 && sideLinks.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setSideActive((entry.target as HTMLElement).id);
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => observer.observe(s));
+    setSideActive('home');
+  }
+</script>

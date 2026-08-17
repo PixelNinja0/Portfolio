@@ -1,13 +1,25 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
+import SectionEyebrow from '../../components/SectionEyebrow.astro';
 import pic1 from '../../assets/images/Picture 1.png';
 import pic2 from '../../assets/images/Picture 2.png';
 import pic3 from '../../assets/images/Picture 3.png';
 import pic4 from '../../assets/images/Picture 4.png';
 import pic5 from '../../assets/images/Picture 5.png';
-import personaMara from '../../assets/images/persona_mara.png';
 import greyboxTitle from '../../assets/images/Greybox title.png';
+
+const ablaufSteps = [
+  { number: '01', title: 'Kontext Definition', description: 'Zielgruppe und Problemfeld analysiert: Ablenkung durch Smartphones beim Lernen.' },
+  { number: '02', title: 'Nutzungskontextanalyse', description: 'Interviews geführt, 4 zentrale Key Insights zur Ablenkungsgewohnheit abgeleitet.' },
+  { number: '03', title: 'Konzeptuelle Modellierung', description: 'Aufgabenmodell, Nutzungsszenarien und konzeptuelles Modell des Systems entwickelt.' },
+  { number: '04', title: 'Informationsarchitektur', description: 'Aufgabenobjekte, Funktionen und Wegweiser strukturiert.' },
+  { number: '05', title: 'Interaktionsdesign', description: 'Abläufe und Zustandslogik der Mensch-Maschine-Interaktion definiert.' },
+  { number: '06', title: 'Interface Design', description: 'Visuelle Hierarchie der einzelnen States gestaltet – LED-Ring, Farben und Formen.' },
+  { number: '07', title: 'Informationsdesign', description: 'Display-Inhalte und Bedienhinweise für jeden Zustand ausformuliert.' },
+  { number: '08', title: 'Sensorisches Design', description: 'Licht- und Tonsignale als nicht-textuelle Kommunikationsebene entworfen.' },
+  { number: '09', title: 'Usability Evaluation', description: 'Die Greybox mit echten Proband:innen getestet: Bedienung ohne Anleitung geprüft und iteriert.' },
+];
 
 const sliderImages = [
   { src: pic1.src, alt: "Greybox Prototyp – Ansicht 1" },
@@ -18,7 +30,10 @@ const sliderImages = [
 ];
 ---
 
-<Layout title="Greybox – Liam Dahl">
+<Layout
+  title="Greybox – Smartphone Detox | Liam Dahl"
+  description="Case Study: Physisches Interaktionsgerät gegen unbewusste Smartphone-Nutzung. Konzeptuelle Modellierung, Hardware-Prototyp und Nutzerstudie."
+>
   <div class="flex flex-col md:flex-row md:items-start mx-20 md:mx-80 py-40 md:py-64 gap-40 md:gap-48">
 
     <!-- Side Nav (Desktop only) -->
@@ -29,21 +44,21 @@ const sliderImages = [
           <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
           <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">01 – Überblick</span>
         </a>
-        <a href="#kontext" data-section="kontext" class="side-nav-link flex items-center gap-12 py-8">
+        <a href="#vorgehen" data-section="vorgehen" class="side-nav-link flex items-center gap-12 py-8">
           <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
-          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">02 – Kontext & Research</span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">02 – Vorgehen</span>
         </a>
-        <a href="#konzept" data-section="konzept" class="side-nav-link flex items-center gap-12 py-8">
+        <a href="#system" data-section="system" class="side-nav-link flex items-center gap-12 py-8">
           <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
-          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">03 – Konzept & Prototype</span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">03 – System</span>
         </a>
-        <a href="#studie" data-section="studie" class="side-nav-link flex items-center gap-12 py-8">
+        <a href="#ergebnisse" data-section="ergebnisse" class="side-nav-link flex items-center gap-12 py-8">
           <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
-          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">04 – Usability Studie</span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">04 – Ergebnisse</span>
         </a>
-        <a href="#ergebnis" data-section="ergebnis" class="side-nav-link flex items-center gap-12 py-8">
+        <a href="#details" data-section="details" class="side-nav-link flex items-center gap-12 py-8">
           <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
-          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">05 – Ergebnis & Reflexion</span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">05 – Details</span>
         </a>
       </nav>
     </aside>
@@ -96,6 +111,8 @@ const sliderImages = [
           </div>
         </div>
 
+        <SectionEyebrow number="01" label="Überblick" title="Was für ein Projekt ist es überhaupt" />
+
         <!-- Projektübersicht Card -->
         <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
           <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">Projektübersicht</span>
@@ -104,147 +121,26 @@ const sliderImages = [
         </div>
       </section>
 
-      <!-- 02 Kontext & Research -->
-      <section id="kontext" class="flex flex-col gap-64 border-t border-border pt-64">
+      <!-- 02 Vorgehen -->
+      <section id="vorgehen" class="flex flex-col gap-64 border-t border-border pt-64">
+        <SectionEyebrow number="02" label="Vorgehen" title="Ablauf des Projekts" />
 
-        <!-- H2 section number heading -->
-        <h2 class="font-heading font-semibold text-[26px] md:text-[32px] text-text-900 tracking-[-0.52px] md:tracking-[-0.64px]"><span class="text-primary-600">02</span> Kontext & Research</h2>
-
-        <!-- Kontext & Problemstellung -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">KONTEXT & PROBLEMSTELLUNG</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Ablenkung beginnt nicht beim Handy, sondern bei der Gewohnheit</h3>
-          </div>
-          <p class="font-body text-[16px] leading-26 text-text-light">Die primäre Zielgruppe sind Schüler:innen und Studierende, die regelmäßig mit Konzentrationsproblemen beim Lernen konfrontiert sind. Besonders in Prüfungsphasen führen Benachrichtigungen, Social Media und das gewohnheitsmäßige Handy-Checking zu Unterbrechungen und Produktivitätsverlust. In der Nutzungskontextanalyse zeigte sich ein klares Muster: Die meisten Nutzer:innen möchten ihr Smartphone nicht vollständig wegsperren, sondern es kontrolliert und bewusst nutzen. Das Ziel ist also nicht Verzicht, sondern eine unterstützte Fokussierung während der Lernphasen.</p>
-        </div>
-
-        <!-- 4 Key Insights -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ERGEBNISSE DER NUTZUNGSKONTEXTANALYSE</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">4 zentrale Key Insights</h3>
-          </div>
-          <div class="flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-16 pb-1 [&>*]:w-[80%] [&>*]:shrink-0 [&>*]:snap-start md:grid md:grid-cols-2 md:overflow-visible md:pb-0 md:gap-24 md:[&>*]:min-w-0 md:[&>*]:w-auto">
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">INSIGHT 01</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Gewohnheit schlägt Absicht</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Ablenkung passiert reflexhaft – der Griff zum Handy ist selten eine bewusste Entscheidung. Ein gutes System muss genau diesen Reflex unterbrechen.</p>
+        <div class="flex flex-col border border-border rounded-lg divide-y divide-border">
+          {ablaufSteps.map((step) => (
+            <div class="flex flex-col md:flex-row md:items-baseline gap-8 md:gap-24 p-20 md:px-32 md:py-24">
+              <span class="font-body font-semibold text-[13px] text-primary-600 md:w-40 shrink-0">{step.number}</span>
+              <span class="font-heading font-semibold text-[15px] md:text-[16px] text-text-900 md:w-220 shrink-0">{step.title}</span>
+              <span class="font-body text-[14px] md:text-[15px] leading-24 text-text-light">{step.description}</span>
             </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">INSIGHT 02</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Physische Distanz wirkt</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Schon eine kleine räumliche Trennung vom Smartphone reduziert die Nutzung deutlich. Das Gerät macht diese Distanz greifbar.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">INSIGHT 03</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Konsequenz statt Verbot</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Eine spürbare, faire Konsequenz auf eine Störung motiviert mehr als ein starres Verbot. Die Zeitverlängerung ist Feedback, keine Strafe.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">INSIGHT 04</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Komplexität wird abgelehnt</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Nutzer:innen wollen kein weiteres System, das sie konfigurieren müssen. Die Interaktion muss ohne Anleitung verständlich sein – beim ersten Berühren.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Methodisches Vorgehen -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">METHODISCHES VORGEHEN</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Design Solutions in fünf Schritten</h3>
-          </div>
-          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-            <div class="flex flex-col gap-12 font-body text-[16px] leading-26">
-              <p><span class="text-primary-600 font-heading font-semibold">01</span>&nbsp;&nbsp;<span class="font-heading font-semibold text-text-900 tracking-[0.06em]">Konzeptuelle Modellierung</span><span class="text-text-light"> – Aufgabenmodell, Nutzungsszenarien und konzeptuelles Modell des Systems.</span></p>
-              <p><span class="text-primary-600 font-heading font-semibold">02</span>&nbsp;&nbsp;<span class="font-heading font-semibold text-text-900 tracking-[0.06em]">Informationsarchitektur</span><span class="text-text-light"> – Aufgabenobjekte, ausführbare Funktionen und Wegweiser strukturiert.</span></p>
-              <p><span class="text-primary-600 font-heading font-semibold">03</span>&nbsp;&nbsp;<span class="font-heading font-semibold text-text-900 tracking-[0.06em]">Interaktionsarchitektur</span><span class="text-text-light"> – Abläufe und Zustandslogik der Mensch-Maschine-Interaktion definiert.</span></p>
-              <p><span class="text-primary-600 font-heading font-semibold">04</span>&nbsp;&nbsp;<span class="font-heading font-semibold text-text-900 tracking-[0.06em]">Interface- & Informationsdesign</span><span class="text-text-light"> – Display-Inhalte und visuelle Hierarchie der einzelnen States gestaltet.</span></p>
-              <p><span class="text-primary-600 font-heading font-semibold">05</span>&nbsp;&nbsp;<span class="font-heading font-semibold text-text-900 tracking-[0.06em]">Sensorisches Design</span><span class="text-text-light"> – Licht- und Tonsignale als nicht-textuelle Kommunikationsebene entworfen.</span></p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      <!-- 03 Konzept & Prototype -->
-      <section id="konzept" class="flex flex-col gap-64 border-t border-border pt-64">
+      <!-- 03 System -->
+      <section id="system" class="flex flex-col gap-48 border-t border-border pt-64">
+        <SectionEyebrow number="03" label="System" title="5 Bilder für dich" />
 
-        <!-- H2 section number heading -->
-        <h2 class="font-heading font-semibold text-[26px] md:text-[32px] text-text-900 tracking-[-0.52px] md:tracking-[-0.64px]"><span class="text-primary-600">03</span> Konzept & Prototype</h2>
-
-               <!-- Persona -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">NUTZERVERSTÄNDNIS</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Marie Lauenberg – Hauptpersona</h3>
-          </div>
-          <div class="bg-border rounded-md p-24 md:p-32 flex flex-col md:flex-row gap-32 md:gap-24">
-            <!-- Left: Green card with illustration + Stats -->
-            <div class="bg-primary-500 rounded-lg p-24 md:p-32 flex flex-col gap-32 shrink-0 md:w-387">
-              <div class="w-full aspect-square max-w-240 mx-auto md:max-w-none md:w-full md:h-240 rounded-lg overflow-hidden flex items-center justify-center">
-               <img src={personaMara.src} alt="WärmeCheck Buchungssystem Mockup"/>
-              </div>
-              <div class="flex flex-col gap-8">
-                <span class="font-heading font-medium text-[18px] text-white leading-snug">Zitat</span>
-                <p class="font-body text-[16px] leading-26 text-white/80">„Bewusste Hürde statt Verbot. Das Gerät macht den Griff zum Handy zu einer aktiven Entscheidung mit spürbarer Konsequenznicht, aber nie nebenbei.“</p>
-              </div>
-              <div class="flex flex-col gap-12">
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Alter</span>
-                  <span class="font-body text-[13px] text-white/70">22</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Situation</span>
-                  <span class="font-body text-[13px] text-white/70">Studentin</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">HAndy Nutzung</span>
-                  <span class="font-body text-[13px] text-white/70">Sehr oft</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Kontext</span>
-                  <span class="font-body text-[13px] text-white/70">Prüfungsphase</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Tech Affinität</span>
-                  <span class="font-body text-[13px] text-white/70">Hoch</span>
-                </div>
-              </div>
-            </div>
-            <!-- Right: Hintergrund, Ziele, Frustrationen -->
-            <div class="flex flex-col gap-32 flex-1">
-              <div class="flex flex-col gap-16">
-                <span class="font-heading font-semibold text-[26px] md:text-[26px] text-text-900 leading-snug tracking-[-0.64px]">Hintergrund</span>
-                <p class="font-body text-[16px] leading-26 text-text-light">Marie studiert Psychologie und befindet sich momentan in der Prüfungsphase. Sie lässt sich gerne von ihrem smartphone ablenken. Daher wünscht sich Marie ein System, womit sie ihre Handy Nutzung unter Kontrolle hat.</p>
-              </div>
-              <div class="flex flex-col gap-16">
-                <span class="font-heading font-semibold text-[26px] md:text-[26px] text-text-900 leading-snug tracking-[-0.64px]">Ziele</span>
-                <ul class="flex flex-col gap-8 list-disc pl-24 font-body text-[16px] leading-26 text-text-light">
-                  <li>Über längere Zeit am Stück konzentriert lernen.</li>
-                  <li>Den reflexhaften Griff zum Handy gar nicht erst zur Option machen</li>
-                  <li>Trotzdem für wirkliche Notfälle erreichbar bleiben.</li>
-                </ul>
-              </div>
-              <div class="flex flex-col gap-16">
-                <span class="font-heading font-semibold text-[26px] md:text-[26px] text-text-900 leading-snug tracking-[-0.64px]">Frustrationen</span>
-                <ul class="flex flex-col gap-8 list-disc pl-24 font-body text-[16px] leading-26 text-text-light">
-                  <li>Verliert den Fokus durch unbewusstes Checken des Handys.</li>
-                  <li>Reine Sperr-Apps werden umgangen oder einfach deaktiviert</li>
-                  <li>Vergisst im Lernstress, eine Fokusphase überhaupt zu starten</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Picture Slider -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">PROTOTYP</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Vom Material zum funktionsfähigen Gerät</h3>
-          </div>
-          <div class="flex flex-col gap-24">
+        <div class="flex flex-col gap-24">
           <div class="relative overflow-hidden rounded-xl" id="slider">
             <div class="flex transition-transform duration-400 ease-in-out" id="slider-track">
               {sliderImages.map((img) => (
@@ -271,187 +167,79 @@ const sliderImages = [
               />
             ))}
           </div>
-          </div>
         </div>
 
         <!-- Design Decisions -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">INTERAKTIONSDESIGN</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Wichtige Design-Entscheidungen</h3>
+        <div class="flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-16 pb-1 [&>*]:w-[80%] [&>*]:shrink-0 [&>*]:snap-start md:grid md:grid-cols-3 md:overflow-visible md:pb-0 md:gap-24 md:[&>*]:min-w-0 md:[&>*]:w-auto">
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">01</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">LED-Kreis als zentrale Zone</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Das Handy wird in eine klar markierte Zone gelegt. Der LED-Ring darum ist Statusfläche und Ablageort zugleich – die Funktion ist räumlich selbsterklärend.</p>
           </div>
-          <div class="flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-16 pb-1 [&>*]:w-[80%] [&>*]:shrink-0 [&>*]:snap-start md:grid md:grid-cols-3 md:overflow-visible md:pb-0 md:gap-24 md:[&>*]:min-w-0 md:[&>*]:w-auto">
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">01</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">LED-Kreis als zentrale Zone</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Das Handy wird in eine klar markierte Zone gelegt. Der LED-Ring darum ist Statusfläche und Ablageort zugleich – die Funktion ist räumlich selbsterklärend.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">02</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Rot und Grün als Statussprache</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Grün signalisiert eine ruhige, laufende Session, Rot eine erkannte Störung. Der Status ist ohne Display-Text auf einen Blick erfassbar.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">03</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Störung kostet Zeit</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Greift man während der Session in die Zone, verlängert sich der Timer. Die Konsequenz ist unmittelbar, fair und an das eigene Verhalten gekoppelt.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">04</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Zwei Modi: Timer und Erinnerung</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Im Timer-Modus wählt man eine Fokusdauer. Im Erinnerungs-Modus setzt die verbaute Echtzeituhr eine feste Uhrzeit, zu der das Gerät an eine Fokusphase erinnert.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">05</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Klare State-Logik</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Das System folgt eindeutigen Zuständen – BOOT, SET, RUN, PAUSE, WAIT. Eingaben sind nur dort möglich, wo sie sinnvoll sind. Das verhindert Fehlbedienung.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">06</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Bewusst physisch gehalten</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Kein App-Ökosystem, kein Account – ein eigenständiges Gerät aus Holz und Arduino-Elektronik. Die physische Form ist Teil der Wirkung.</p>
-            </div>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">02</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Rot und Grün als Statussprache</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Grün signalisiert eine ruhige, laufende Session, Rot eine erkannte Störung. Der Status ist ohne Display-Text auf einen Blick erfassbar.</p>
           </div>
-        </div>
-
-        <!-- Interaktionsarchitektur -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">INTERAKTIONSARCHITEKTUR</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Die State-Logik des Geräts</h3>
-            <p class="font-body text-[16px] leading-26 text-text-light">Das Verhalten folgt fünf klar getrennten Zuständen. Jeder Zustand erlaubt nur die Eingaben, die dort sinnvoll sind – das macht die Bedienung robust und nachvollziehbar.</p>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">03</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Störung kostet Zeit</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Greift man während der Session in die Zone, verlängert sich der Timer. Die Konsequenz ist unmittelbar, fair und an das eigene Verhalten gekoppelt.</p>
           </div>
-          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-0">
-            <div class="flex flex-col md:flex-row gap-8 md:gap-0 py-20 md:py-24 first:pt-0">
-              <span class="font-body font-normal text-[16px] leading-26 text-primary-600 md:w-120 shrink-0">Boot</span>
-              <span class="font-body font-normal text-[16px] leading-26 text-text-900 md:w-160 shrink-0">Einstieg</span>
-              <span class="font-body text-[16px] leading-26 text-text-light">Startbildschirm mit klarer „Click to START"-Aktion. Keine weiteren Eingaben möglich.</span>
-            </div>
-            <div class="border-t border-border"></div>
-            <div class="flex flex-col md:flex-row gap-8 md:gap-0 py-20 md:py-24">
-              <span class="font-body font-normal text-[16px] leading-26 text-primary-600 md:w-120 shrink-0">SET</span>
-              <span class="font-body font-normal text-[16px] leading-26 text-text-900 md:w-160 shrink-0">Entscheidung</span>
-              <span class="font-body text-[16px] leading-26 text-text-light">Zeit per Drehen einstellen, per Klick bestätigen. Der LED-Ring zeigt die Dauer als Vorschau.</span>
-            </div>
-            <div class="border-t border-border"></div>
-            <div class="flex flex-col md:flex-row gap-8 md:gap-0 py-20 md:py-24">
-              <span class="font-body font-normal text-[16px] leading-26 text-primary-600 md:w-120 shrink-0">RUN</span>
-              <span class="font-body font-normal text-[16px] leading-26 text-text-900 md:w-160 shrink-0">Prozess</span>
-              <span class="font-body text-[16px] leading-26 text-text-light">Countdown läuft, der LED-Ring leert sich. Klick pausiert, eine Störung verlängert die Zeit.</span>
-            </div>
-            <div class="border-t border-border"></div>
-            <div class="flex flex-col md:flex-row gap-8 md:gap-0 py-20 md:py-24">
-              <span class="font-body font-normal text-[16px] leading-26 text-primary-600 md:w-120 shrink-0">PAUSE</span>
-              <span class="font-body font-normal text-[16px] leading-26 text-text-900 md:w-160 shrink-0">Unterbrechung</span>
-              <span class="font-body text-[16px] leading-26 text-text-light">Fortschritt eingefroren. Der Nutzer kann fortsetzen oder per Long-Press zurücksetzen.</span>
-            </div>
-            <div class="border-t border-border"></div>
-            <div class="flex flex-col md:flex-row gap-8 md:gap-0 py-20 md:py-24 last:pb-0">
-              <span class="font-body font-normal text-[16px] leading-26 text-primary-600 md:w-120 shrink-0">WAIT</span>
-              <span class="font-body font-normal text-[16px] leading-26 text-text-900 md:w-160 shrink-0">Bewusste Handlung</span>
-              <span class="font-body text-[16px] leading-26 text-text-light">Zeit abgelaufen, ruhiger Puls. Das System endet erst durch das reale Entnehmen des Handys.</span>
-            </div>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">04</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Zwei Modi: Timer und Erinnerung</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Im Timer-Modus wählt man eine Fokusdauer. Im Erinnerungs-Modus setzt die verbaute Echtzeituhr eine feste Uhrzeit, zu der das Gerät an eine Fokusphase erinnert.</p>
+          </div>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">05</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Klare State-Logik</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Das System folgt eindeutigen Zuständen – BOOT, SET, RUN, PAUSE, WAIT. Eingaben sind nur dort möglich, wo sie sinnvoll sind. Das verhindert Fehlbedienung.</p>
+          </div>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">06</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Bewusst physisch gehalten</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Kein App-Ökosystem, kein Account – ein eigenständiges Gerät aus Holz und Arduino-Elektronik. Die physische Form ist Teil der Wirkung.</p>
           </div>
         </div>
       </section>
 
-      <!-- 04 Usability Studie -->
-      <section id="studie" class="flex flex-col gap-64 border-t border-border pt-64">
+      <!-- 04 Ergebnisse -->
+      <section id="ergebnisse" class="flex flex-col gap-32 border-t border-border pt-64">
+        <SectionEyebrow number="04" label="Ergebnisse" title="Zahlen aus der Usability-Studie" />
 
-        <!-- H2 section number heading -->
-        <h2 class="font-heading font-semibold text-[26px] md:text-[32px] text-text-900 tracking-[-0.52px] md:tracking-[-0.64px]"><span class="text-primary-600">04</span> Usability Studie</h2>
-
-        <!-- Header + Stats -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
+        <div class="border border-border rounded-lg flex flex-col">
+          <div class="flex flex-col gap-16 p-24 md:p-32">
             <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">USABILITY-STUDIE</span>
-            <div class="flex flex-col gap-24">
-              <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Das Gerät im Test mit echten Nutzer:innen</h3>
-              <p class="font-body text-[16px] leading-26 text-text-light">Um zu prüfen, ob die Interaktion verständlich ist und tatsächlich beim Fokussieren hilft, wurde die Greybox in einer Usability-Studie getestet. Die Proband:innen bedienten das Gerät eigenständig – vom Einstellen des Timers bis zum Ende der Fokusphase.</p>
-            </div>
+            <h3 class="font-heading font-semibold text-[20px] md:text-[24px] text-text-900">Gemessene Werte</h3>
+            <p class="font-body text-[16px] leading-26 text-text-light">Um zu prüfen, ob die Interaktion verständlich ist und tatsächlich beim Fokussieren hilft, wurde die Greybox in einer Usability-Studie getestet. Die Proband:innen bedienten das Gerät eigenständig – vom Einstellen des Timers bis zum Ende der Fokusphase.</p>
           </div>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-16 md:gap-24">
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-16 md:gap-24 border-t border-border p-24 md:p-32">
+            <div class="flex flex-col gap-8">
               <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">5</p>
               <p class="font-body font-medium text-[13px] text-text-light">Proband:innen</p>
             </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+            <div class="flex flex-col gap-8">
               <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">92%</p>
               <p class="font-body font-medium text-[13px] text-text-light">Aufgaben-Erfolgsrate</p>
             </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+            <div class="flex flex-col gap-8">
               <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">78</p>
               <p class="font-body font-medium text-[13px] text-text-light">SUS-Score (Ø)</p>
             </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+            <div class="flex flex-col gap-8">
               <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">3</p>
               <p class="font-body font-medium text-[13px] text-text-light">Zentrale Findings</p>
             </div>
           </div>
         </div>
 
-        <!-- Methodik -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">METHODIK</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Warum und wie getestet wurde</h3>
-          </div>
-          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-            <p class="font-body text-[16px] leading-26 text-text-light">Die Studie prüfte, ob die Mensch-Maschine-Interaktion der Greybox ohne Anleitung verständlich ist. Jede:r Proband:in durchlief dieselben Aufgaben und wurde dabei beobachtet.</p>
-          </div>
-        </div>
-
-        <!-- Ergebnisse -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ERGEBNISSE</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Was die Probanden gezeigt haben</h3>
-          </div>
-          <div class="flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-16 pb-1 [&>*]:w-[80%] [&>*]:shrink-0 [&>*]:snap-start md:overflow-visible md:pb-0 md:gap-24 md:[&>*]:min-w-0 md:[&>*]:w-auto md:[&>*]:shrink">
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">STÄRKSTES FINDING</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">SET-Zustand nicht sofort verständlich</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Mehreren Proband:innen war anfangs unklar, dass im SET-Zustand gedreht werden muss. Der Hinweis war zu dezent.</p>
-            </div>
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ZWEITES FINDING</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Zeitstrafe positiv aufgenommen</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Die Zeitverlängerung bei Störung wurde nicht als Strafe, sondern als faires, nachvollziehbares Feedback empfunden.</p>
-            </div>
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ÜBERRASCHUNG</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">WAIT-Zustand wurde übergangen</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Einzelne Proband:innen wollten die Session per Klick beenden, statt das Handy zu entnehmen – die bewusste Handlung war nicht erwartet.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Iteration -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ITERATION</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Änderungen auf Basis der Findings</h3>
-          </div>
-          <div class="flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-16 pb-1 [&>*]:w-[80%] [&>*]:shrink-0 [&>*]:snap-start md:grid md:grid-cols-2 md:overflow-visible md:pb-0 md:gap-24 md:[&>*]:min-w-0 md:[&>*]:w-auto">
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">FIX 01</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">SET-Hinweis prominenter</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Der Bedienhinweis „drehen + klick" wurde im SET-Zustand größer und höher platziert, damit die Eingabeart sofort klar ist.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">FIX 02</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">WAIT-Zustand erklärt sich selbst</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Im WAIT-Zustand zeigt das Display jetzt explizit „Handy entnehmen", statt nur einen passiven Endzustand darzustellen.</p>
-            </div>
-          </div>
-        </div>
+        <p class="font-body text-[13px] leading-22 text-text-light">SET-Zustand nicht sofort verständlich (Hinweis war zu dezent), Zeitstrafe positiv aufgenommen, WAIT-Zustand teils übergangen. Als Fix: SET-Hinweis prominenter platziert, WAIT-Zustand zeigt jetzt explizit „Handy entnehmen".</p>
       </section>
 
-      <!-- 05 Ergebnis & Reflexion -->
-      <section id="ergebnis" class="flex flex-col gap-64 border-t border-border pt-64">
-
-        <!-- H2 section number heading -->
-        <h2 class="font-heading font-semibold text-[26px] md:text-[32px] text-text-900 tracking-[-0.52px] md:tracking-[-0.64px]"><span class="text-primary-600">05</span> Ergebnis & Reflexion</h2>
+      <!-- 05 Details -->
+      <section id="details" class="flex flex-col gap-64 border-t border-border pt-64">
+        <SectionEyebrow number="05" label="Details" title="Zusammenfassung und Projektdetails zum nachschauen" />
 
         <!-- Result Card -->
         <div class="border border-border rounded-lg p-24 md:p-48 flex flex-col gap-32 md:gap-40">
@@ -462,29 +250,10 @@ const sliderImages = [
               <p class="font-body text-[16px] leading-26 text-text-light">Am Ende des Projekts stand ein eigenständiges Gerät aus Holz und Arduino-Elektronik, das Timer, LED-Status, Ton, Störungserkennung und geplante Erinnerungen über eine bewusst reduzierte Mensch-Maschine-Interaktion zusammenführt. Das Konzept wurde methodisch entwickelt, gebaut und mit echten Proband:innen auf Verständlichkeit geprüft und iteriert.</p>
             </div>
           </div>
-          <div class="flex gap-32 items-center flex-wrap">
+          <div class="flex gap-16 md:gap-32 items-center flex-wrap">
             <Button label="Live Demo ansehen" href="https://pixelninja0.github.io/greybox-demo/" variant="primary" />
+            <Button label="Projekt Details ansehen" href="#" variant="secondary" />
             <Button label="GitHub Repository" href="https://github.com/PixelNinja0" variant="secondary" />
-          </div>
-        </div>
-
-        <!-- Learnings -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">LEARNINGS</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Was ich aus dem Projekt mitnehme</h3>
-          </div>
-          <div class="flex flex-col md:flex-row gap-16 md:gap-24">
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">01</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Interaktion entsteht nicht nur am Bildschirm</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Mensch-Maschine-Interaktion mit Licht, Ton und Form zu gestalten hat gezeigt, dass auch ein Gerät ohne Text klar kommunizieren kann – wenn die Signale konsequent gewählt sind.</p>
-            </div>
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">02</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Eine klare State-Logik verhindert Fehler</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Eingaben nur dort zuzulassen, wo sie sinnvoll sind, hat die Bedienung spürbar robuster gemacht. Die Methodik aus der Konzeptphase hat sich im Test bestätigt.</p>
-            </div>
           </div>
         </div>
       </section>

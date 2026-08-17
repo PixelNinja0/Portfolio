@@ -1,11 +1,35 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
+import SectionEyebrow from '../../components/SectionEyebrow.astro';
 import imgHeroVisual from '../../assets/images/ai-pdf-Mockup.png';
-import personaLea from '../../assets/images/persona_Lea.png';
+import imgPoster from '../../assets/images/Posterpdf.png';
+import imgWorkflow from '../../assets/images/Workflow_PDF.png';
+import imgScreen from '../../assets/images/Screenpdf.png';
+
+const sliderImages = [
+  { src: imgPoster.src, alt: 'Accessible PDF Reader – Poster' },
+  { src: imgWorkflow.src, alt: 'Accessible PDF Reader – Workflow' },
+  { src: imgScreen.src, alt: 'Accessible PDF Reader – Screen' },
+];
+
+const ablaufSteps = [
+  { number: '01', title: 'Kontext Definition', description: 'Nutzergruppe definiert, erste Ideen entwickelt.' },
+  { number: '02', title: 'Nutzungskontextanalyse', description: 'Interviews durchgeführt, Persona erstellt, User Storys & Aufgabenmodelle erstellt.' },
+  { number: '03', title: 'Anforderungsermittlung', description: 'Erfordernisse aus Nutzungskontextanalyse in Anforderungen formuliert.' },
+  { number: '04', title: 'Informationsarchitektur', description: 'Navigationsstruktur, Skizzen, Aufgabenobjekte & Attribute erstellt.' },
+  { number: '05', title: 'Interaktionsdesign', description: 'Wireframes und Low-Fidelity-Skizzen der Zustände erstellt.' },
+  { number: '06', title: 'Interface Design', description: 'High-Fidelity-Prototyp erstellt.' },
+  { number: '07', title: 'Frontend', description: 'HTML/CSS/JS umgesetzt, mit Fokus auf Screenreader-Zugänglichkeit.' },
+  { number: '08', title: 'Test & Betrieb', description: 'End-to-End getestet und auf Render deployt.' },
+  { number: '09', title: 'Dokumentation & Präsentation', description: 'Dokumentation erstellt, Präsentation erstellt.' },
+];
 ---
 
-<Layout title="Accessible PDF Reader – Liam Dahl">
+<Layout
+  title="Accessible PDF Reader | Liam Dahl"
+  description="Case Study: PDF-Reader für blinde und sehbehinderte Nutzer. Screenreader-first konzipiert, mit Fokus-Management und getesteter Informationsarchitektur."
+>
   <div class="flex flex-col md:flex-row md:items-start mx-20 md:mx-80 py-40 md:py-64 gap-40 md:gap-48">
 
     <!-- Side Nav (Desktop only) -->
@@ -16,21 +40,21 @@ import personaLea from '../../assets/images/persona_Lea.png';
           <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
           <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">01 – Überblick</span>
         </a>
-        <a href="#architektur" data-section="architektur" class="side-nav-link flex items-center gap-12 py-8">
+        <a href="#vorgehen" data-section="vorgehen" class="side-nav-link flex items-center gap-12 py-8">
           <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
-          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">02 – Architektur</span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">02 – Vorgehen</span>
         </a>
-        <a href="#barrierefreiheit" data-section="barrierefreiheit" class="side-nav-link flex items-center gap-12 py-8">
+        <a href="#system" data-section="system" class="side-nav-link flex items-center gap-12 py-8">
           <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
-          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">03 – Barrierefreiheit</span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">03 – System</span>
         </a>
         <a href="#test" data-section="test" class="side-nav-link flex items-center gap-12 py-8">
           <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
           <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">04 – Test & Betrieb</span>
         </a>
-        <a href="#ergebnis" data-section="ergebnis" class="side-nav-link flex items-center gap-12 py-8">
+        <a href="#details" data-section="details" class="side-nav-link flex items-center gap-12 py-8">
           <span data-bar class="block h-2 w-4 bg-text-light rounded-full transition-all duration-200"></span>
-          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">05 – Ergebnis</span>
+          <span data-text class="font-body font-normal text-[14px] text-text-light transition-colors duration-200">05 – Details</span>
         </a>
       </nav>
     </aside>
@@ -74,14 +98,16 @@ import personaLea from '../../assets/images/persona_Lea.png';
             <p class="font-body text-[16px] leading-26 text-text-light">2025</p>
           </div>
           <div class="border border-border rounded-lg p-16 md:p-32 flex flex-col gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">STACK</span>
-            <p class="font-body text-[16px] leading-26 text-text-light">Python · FastAPI · OpenAI · pypdf · HTML/CSS/JS</p>
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">TOOLS</span>
+            <p class="font-body text-[16px] leading-26 text-text-light">Python · FastAPI · OpenAI (gpt-4.1-nano) · pypdf · HTML/CSS/JS</p>
           </div>
           <div class="border border-border rounded-lg p-16 md:p-32 flex flex-col gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">SCHWERPUNKT</span>
-            <p class="font-body text-[16px] leading-26 text-text-light">Barrierefreiheit (Blind-first)</p>
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">METHODEN</span>
+            <p class="font-body text-[16px] leading-26 text-text-light">Screenreader-Test (NVDA)</p>
           </div>
         </div>
+
+        <SectionEyebrow number="01" label="Überblick" title="Was für ein Projekt ist es überhaupt" />
 
         <!-- Überblick Card -->
         <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
@@ -91,326 +117,126 @@ import personaLea from '../../assets/images/persona_Lea.png';
         </div>
       </section>
 
-      <!-- 02 Architektur -->
-      <section id="architektur" class="flex flex-col gap-64 border-t border-border pt-64">
+      <!-- 02 Vorgehen -->
+      <section id="vorgehen" class="flex flex-col gap-64 border-t border-border pt-64">
+        <SectionEyebrow number="02" label="Vorgehen" title="Ablauf des Projekts" />
 
-        <!-- H2 section number heading -->
-        <h2 class="font-heading font-semibold text-[26px] md:text-[32px] text-text-900 tracking-[-0.52px] md:tracking-[-0.64px]"><span class="text-primary-600">02</span> Architektur</h2>
-
-        <!-- Intro -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ARCHITEKTUR & ENGINEERING</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Jede Datei eine Aufgabe</h3>
-          </div>
-          <p class="font-body text-[16px] leading-26 text-text-light">Fünf Module, klar geschnitten. Kein Modul kennt mehr als es muss: pdf.py weiß nichts von der KI, ai.py nichts vom Web-Framework. Das macht jede Komponente einzeln testbar und austauschbar.</p>
-        </div>
-
-        <!-- Module Cards -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">DIE MODULE</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Vier Bausteine – plus die entscheidende Naht</h3>
-          </div>
-          <div class="flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-16 pb-1 [&>*]:w-[80%] [&>*]:shrink-0 [&>*]:snap-start md:grid md:grid-cols-2 md:overflow-visible md:pb-0 md:gap-24 md:[&>*]:min-w-0 md:[&>*]:w-auto">
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">main.py</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Routes & HTTP</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">FastAPI-Endpunkte. Verbindet die Module und kümmert sich um HTTP – sonst nichts.</p>
+        <div class="flex flex-col border border-border rounded-lg divide-y divide-border">
+          {ablaufSteps.map((step) => (
+            <div class="flex flex-col md:flex-row md:items-baseline gap-8 md:gap-24 p-20 md:px-32 md:py-24">
+              <span class="font-body font-semibold text-[13px] text-primary-600 md:w-40 shrink-0">{step.number}</span>
+              <span class="font-heading font-semibold text-[15px] md:text-[16px] text-text-900 md:w-220 shrink-0">{step.title}</span>
+              <span class="font-body text-[14px] md:text-[15px] leading-24 text-text-light">{step.description}</span>
             </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">pdf.py</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">PDF → Text</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Extrahiert Text mit pypdf. Erkennt nicht lesbare oder gescannte PDFs und meldet sie klar.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ai.py</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">KI gekapselt</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Kapselt die OpenAI-Anbindung samt vollständiger Fehlerbehandlung – der Rest der App kennt die KI nicht.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">config.py</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Einstellungen</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">.env-Konfiguration, getippt, mit validate() beim Start – fehlende Keys fallen sofort auf.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- context.py -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">DIE ENTSCHEIDENDE NAHT</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">context.py – ein Erweiterungspunkt</h3>
-          </div>
-          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-            <span class="font-heading font-semibold text-[12px] tracking-[0.72px] text-text-900">context.get_context()</span>
-            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Eine Funktion, ein Umbaupunkt</p>
-            <p class="font-body text-[16px] leading-26 text-text-900">Die ganze App greift nur über diese eine Funktion auf den Dokumentkontext zu. Heute liefert sie den Volltext in den Prompt. Ein späterer RAG-Umbau – Embeddings, Vektorsuche – berührt ausschließlich diese Funktion. Die Signatur bleibt, main.py und ai.py merken nichts. Architektur ist die Entscheidung, was sich später nicht ändern muss.</p>
-          </div>
+          ))}
         </div>
       </section>
 
-      <!-- 03 Barrierefreiheit -->
-      <section id="barrierefreiheit" class="flex flex-col gap-64 border-t border-border pt-64">
+      <!-- 03 System -->
+      <section id="system" class="flex flex-col gap-48 border-t border-border pt-64">
+        <SectionEyebrow number="03" label="System" title="Bild für dich" />
 
-        <!-- H2 section number heading -->
-        <h2 class="font-heading font-semibold text-[26px] md:text-[32px] text-text-900 tracking-[-0.52px] md:tracking-[-0.64px]"><span class="text-primary-600">03</span> Barrierefreiheit</h2>
-
-        <!-- Persona -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">NUTZERVERSTÄNDNIS</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Johanna Wendt – Hauptpersona</h3>
+        <div class="flex flex-col gap-24">
+          <div class="relative overflow-hidden rounded-xl bg-border" id="slider">
+            <div class="flex transition-transform duration-400 ease-in-out" id="slider-track">
+              {sliderImages.map((img) => (
+                <div class="min-w-full">
+                  <img src={img.src} alt={img.alt} class="w-full h-420 md:h-640 object-contain" />
+                </div>
+              ))}
+            </div>
+            <!-- Prev / Next -->
+            <button id="slider-prev" aria-label="Vorheriges Bild" class="absolute left-16 top-1/2 -translate-y-1/2 w-40 h-40 bg-background border border-border rounded-full flex items-center justify-center text-text-900 hover:bg-border transition-colors">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button id="slider-next" aria-label="Nächstes Bild" class="absolute right-16 top-1/2 -translate-y-1/2 w-40 h-40 bg-background border border-border rounded-full flex items-center justify-center text-text-900 hover:bg-border transition-colors">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
-          <div class="bg-border rounded-md p-24 md:p-32 flex flex-col md:flex-row gap-32 md:gap-24">
-            <!-- Left: Green card with illustration + Stats -->
-            <div class="bg-primary-500 rounded-lg p-24 md:p-32 flex flex-col gap-32 shrink-0 md:w-387">
-              <div class="w-full aspect-square max-w-240 mx-auto md:max-w-none md:w-full md:h-240 rounded-lg overflow-hidden flex items-center justify-center">
-                <img src={personaLea.src} alt="Johanna Wendt Illustration" class="w-full h-full object-contain" />
-              </div>
-              <div class="flex flex-col gap-8">
-                <span class="font-heading font-medium text-[18px] text-white leading-snug">Zitat</span>
-                <p class="font-body text-[16px] leading-26 text-white/80">„Ich will eine Frage stellen können – nicht ein halbes Buch durchhören."</p>
-              </div>
-              <div class="flex flex-col gap-12">
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Alter</span>
-                  <span class="font-body text-[13px] text-white/70">28</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Sehkraft</span>
-                  <span class="font-body text-[13px] text-white/70">Blind, von Geburt an</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Nutzung</span>
-                  <span class="font-body text-[13px] text-white/70">Tastatur + Screenreader</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Screenreader</span>
-                  <span class="font-body text-[13px] text-white/70">NVDA · VoiceOver</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Tätigkeit</span>
-                  <span class="font-body text-[13px] text-white/70">Berufsbegleitendes Studium</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Kontext</span>
-                  <span class="font-body text-[13px] text-white/70">Lange PDFs aller Art</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Geräte</span>
-                  <span class="font-body text-[13px] text-white/70">Laptop & Smartphone</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="font-heading font-semibold text-[11px] tracking-[0.66px] text-white/90">Arbeitsweise</span>
-                  <span class="font-body text-[13px] text-white/70">Rein per Tastatur</span>
-                </div>
-              </div>
-            </div>
-            <!-- Right: Hintergrund, Ziele, Frustrationen -->
-            <div class="flex flex-col gap-32 flex-1">
-              <div class="flex flex-col gap-16">
-                <span class="font-heading font-semibold text-[26px] md:text-[26px] text-text-900 leading-snug tracking-[-0.64px]">Hintergrund</span>
-                <p class="font-body text-[16px] leading-26 text-text-light">Johanna studiert berufsbegleitend und ist von Geburt an blind. Lange Dokumente – Skripte, Verträge, Behördenpost – arbeitet sie mit dem Screenreader durch. Statt sie linear durchzuhören, will sie sie gezielt befragen.</p>
-              </div>
-              <div class="flex flex-col gap-16">
-                <span class="font-heading font-semibold text-[26px] md:text-[26px] text-text-900 leading-snug tracking-[-0.64px]">Ziele</span>
-                <ul class="flex flex-col gap-8 list-disc pl-24 font-body text-[16px] leading-26 text-text-light">
-                  <li>Eine konkrete Frage ans Dokument stellen, statt es von vorn durchzuhören.</li>
-                  <li>Mit der eigenen Screenreader-Stimme und -Geschwindigkeit arbeiten.</li>
-                  <li>Jederzeit wissen, wo sie im Ablauf steht.</li>
-                </ul>
-              </div>
-              <div class="flex flex-col gap-16">
-                <span class="font-heading font-semibold text-[26px] md:text-[26px] text-text-900 leading-snug tracking-[-0.64px]">Frustrationen</span>
-                <ul class="flex flex-col gap-8 list-disc pl-24 font-body text-[16px] leading-26 text-text-light">
-                  <li>Lange Dokumente komplett durchhören kostet enorm Zeit.</li>
-                  <li>Auto-Play-Audio und doppelte Ansagen kollidieren mit dem Screenreader.</li>
-                  <li>Inkonsistente Fokus-Reihenfolge, fehlende Labels, kontextlose Buttons.</li>
-                </ul>
-              </div>
-            </div>
+          <!-- Dots -->
+          <div class="flex justify-center gap-8" id="slider-dots">
+            {sliderImages.map((_, i) => (
+              <button
+                class={`slider-dot w-8 h-8 rounded-full border border-border transition-colors ${i === 0 ? 'bg-text-900' : 'bg-border'}`}
+                data-index={i}
+                aria-label={`Bild ${i + 1}`}
+              />
+            ))}
           </div>
         </div>
 
         <!-- Barrierefreiheit Entscheidungen -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">BARRIEREFREIHEIT (BLIND-FIRST)</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Entscheidungen, die direkt aus der Persona folgen</h3>
+        <div class="flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-16 pb-1 [&>*]:w-[80%] [&>*]:shrink-0 [&>*]:snap-start md:grid md:grid-cols-3 md:overflow-visible md:pb-0 md:gap-24 md:[&>*]:min-w-0 md:[&>*]:w-auto">
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">AUDIO</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Vorlesen bewusst degradiert</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Für Screenreader-Nutzer redundant – ihre Software liest selbst. Der Vorlesen-Button ist auf Seh- und Leseschwäche zugeschnitten: nur manueller Start, nie Auto-Play – sonst doppelte Stimme.</p>
           </div>
-          <div class="flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-16 pb-1 [&>*]:w-[80%] [&>*]:shrink-0 [&>*]:snap-start md:grid md:grid-cols-3 md:overflow-visible md:pb-0 md:gap-24 md:[&>*]:min-w-0 md:[&>*]:w-auto">
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">AUDIO</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Vorlesen bewusst degradiert</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Für Screenreader-Nutzer redundant – ihre Software liest selbst. Der Vorlesen-Button ist auf Seh- und Leseschwäche zugeschnitten: nur manueller Start, nie Auto-Play – sonst doppelte Stimme.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">FOKUS</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Antwort = Hinspringen</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Kommt die Antwort, springt der Fokus direkt hinein – und sie wird nicht zusätzlich per Live-Region angesagt. Beides zusammen würde sie doppelt vorlesen.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ANSAGEN</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Live-Regionen nach Dringlichkeit</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Verlauf höflich (role=log), Fehler bestimmt (role=alert). Während der KI-Latenz hält „Antwort wird erstellt…" die Stille auf; Senden ist solange gesperrt.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">DIALOG</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">PDF wechseln nur mit Bestätigung</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Modaler Dialog mit Fokus-Falle, Esc bricht ab, der Fokus kehrt zurück. Bei „Laden": Verlauf leeren, Fokus auf die Empty-State-Überschrift.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">STRUKTUR</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Semantik als Fundament</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Semantisches HTML, Landmarks, Skip-Link, ein Label an jedem Feld, sichtbare Fokusringe – und Farbe ist nie der alleinige Bedeutungsträger.</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ROBUST</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Für alle nutzbar</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Touch-Ziele ≥ 44px, Reflow bis 320px und 200% Zoom, prefers-reduced-motion respektiert, fetch statt Reload für nahtlose Updates.</p>
-            </div>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">FOKUS</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Antwort = Hinspringen</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Kommt die Antwort, springt der Fokus direkt hinein – und sie wird nicht zusätzlich per Live-Region angesagt. Beides zusammen würde sie doppelt vorlesen.</p>
           </div>
-        </div>
-
-        <!-- Zustände & Ansagen -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ZUSTÄNDE & ANSAGEN</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Wie das Interface durch den Ablauf führt</h3>
-            <p class="font-body text-[16px] leading-26 text-text-light">Jeder Zustand hat eine definierte Ansage und ein klares Fokusziel – damit ein Screenreader-Nutzer nie im Unklaren ist, was gerade passiert.</p>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ANSAGEN</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Live-Regionen nach Dringlichkeit</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Verlauf höflich (role=log), Fehler bestimmt (role=alert). Während der KI-Latenz hält „Antwort wird erstellt…" die Stille auf; Senden ist solange gesperrt.</p>
           </div>
-          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-0">
-            <div class="flex flex-col md:flex-row gap-8 md:gap-0 py-20 md:py-24 first:pt-0">
-              <span class="font-body font-normal text-[16px] leading-26 text-primary-600 md:w-120 shrink-0">LEER</span>
-              <span class="font-body font-normal text-[16px] leading-26 text-text-900 md:w-160 shrink-0">Startzustand</span>
-              <span class="font-body text-[16px] leading-26 text-text-light">Empty-State mit klarer Aufforderung „Stell eine Frage". Der Fokus liegt direkt im Eingabefeld.</span>
-            </div>
-            <div class="border-t border-border"></div>
-            <div class="flex flex-col md:flex-row gap-8 md:gap-0 py-20 md:py-24">
-              <span class="font-body font-normal text-[16px] leading-26 text-primary-600 md:w-120 shrink-0">UPLOAD</span>
-              <span class="font-body font-normal text-[16px] leading-26 text-text-900 md:w-160 shrink-0">Dokument laden</span>
-              <span class="font-body text-[16px] leading-26 text-text-light">Datei wählen; der Upload wird per Status „Dokument geladen" angesagt, Fehler bestimmt gemeldet.</span>
-            </div>
-            <div class="border-t border-border"></div>
-            <div class="flex flex-col md:flex-row gap-8 md:gap-0 py-20 md:py-24">
-              <span class="font-body font-normal text-[16px] leading-26 text-primary-600 md:w-120 shrink-0">FRAGE</span>
-              <span class="font-body font-normal text-[16px] leading-26 text-text-900 md:w-160 shrink-0">Eingabe</span>
-              <span class="font-body text-[16px] leading-26 text-text-light">Frage eintippen und senden – klar beschriftet, vollständig per Tastatur erreichbar.</span>
-            </div>
-            <div class="border-t border-border"></div>
-            <div class="flex flex-col md:flex-row gap-8 md:gap-0 py-20 md:py-24">
-              <span class="font-body font-normal text-[16px] leading-26 text-primary-600 md:w-120 shrink-0">WARTEN</span>
-              <span class="font-body font-normal text-[16px] leading-26 text-text-900 md:w-160 shrink-0">KI-Latenz</span>
-              <span class="font-body text-[16px] leading-26 text-text-light">„Antwort wird erstellt…" füllt die Stille, Senden ist gesperrt – kein doppeltes Absenden.</span>
-            </div>
-            <div class="border-t border-border"></div>
-            <div class="flex flex-col md:flex-row gap-8 md:gap-0 py-20 md:py-24 last:pb-0">
-              <span class="font-body font-normal text-[16px] leading-26 text-primary-600 md:w-120 shrink-0">ANTWORT</span>
-              <span class="font-body font-normal text-[16px] leading-26 text-text-900 md:w-160 shrink-0">Fokus springt hin</span>
-              <span class="font-body text-[16px] leading-26 text-text-light">Die Antwort erscheint im Verlauf, der Fokus springt hinein. Optional vorlesbar – nie automatisch.</span>
-            </div>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">DIALOG</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">PDF wechseln nur mit Bestätigung</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Modaler Dialog mit Fokus-Falle, Esc bricht ab, der Fokus kehrt zurück. Bei „Laden": Verlauf leeren, Fokus auf die Empty-State-Überschrift.</p>
+          </div>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">STRUKTUR</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Semantik als Fundament</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Semantisches HTML, Landmarks, Skip-Link, ein Label an jedem Feld, sichtbare Fokusringe – und Farbe ist nie der alleinige Bedeutungsträger.</p>
+          </div>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
+            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ROBUST</span>
+            <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Für alle nutzbar</p>
+            <p class="font-body text-[16px] leading-26 text-text-light">Touch-Ziele ≥ 44px, Reflow bis 320px und 200% Zoom, prefers-reduced-motion respektiert, fetch statt Reload für nahtlose Updates.</p>
           </div>
         </div>
       </section>
 
       <!-- 04 Test & Betrieb -->
-      <section id="test" class="flex flex-col gap-64 border-t border-border pt-64">
+      <section id="test" class="flex flex-col gap-32 border-t border-border pt-64">
+        <SectionEyebrow number="04" label="Test & Betrieb" title="End-to-End mit einer Test-PDF geprüft" />
 
-        <!-- H2 section number heading -->
-        <h2 class="font-heading font-semibold text-[26px] md:text-[32px] text-text-900 tracking-[-0.52px] md:tracking-[-0.64px]"><span class="text-primary-600">04</span> Test & Betrieb</h2>
-
-        <!-- Header + Stats -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">TEST & BETRIEB</span>
-            <div class="flex flex-col gap-24">
-              <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">End-to-End mit einer Test-PDF geprüft</h3>
-              <p class="font-body text-[16px] leading-26 text-text-light">Vier Fragetypen, ein Ziel: Antwortet das System nur auf Basis des Dokuments – und sagt es ehrlich, wenn etwas nicht drinsteht?</p>
-            </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-16 md:gap-24">
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+            <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">4/4</p>
+            <p class="font-body font-medium text-[13px] text-text-light">Testfälle bestanden</p>
           </div>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-16 md:gap-24">
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
-              <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">4/4</p>
-              <p class="font-body font-medium text-[13px] text-text-light">Testfälle bestanden</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
-              <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">5</p>
-              <p class="font-body font-medium text-[13px] text-text-light">entkoppelte Module</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
-              <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">100 %</p>
-              <p class="font-body font-medium text-[13px] text-text-light">Antworten dokumentbasiert</p>
-            </div>
-            <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
-              <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">0</p>
-              <p class="font-body font-medium text-[13px] text-text-light">Halluzinationen im Test</p>
-            </div>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+            <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">5</p>
+            <p class="font-body font-medium text-[13px] text-text-light">entkoppelte Module</p>
+          </div>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+            <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">100 %</p>
+            <p class="font-body font-medium text-[13px] text-text-light">Antworten dokumentbasiert</p>
+          </div>
+          <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-8">
+            <p class="font-heading font-bold text-[40px] md:text-[48px] text-text-900 leading-none">0</p>
+            <p class="font-body font-medium text-[13px] text-text-light">Halluzinationen im Test</p>
           </div>
         </div>
 
         <!-- Vorgehen -->
         <div class="flex flex-col gap-32">
           <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">VORGEHEN</span>
             <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Wie getestet wurde</h3>
           </div>
           <div class="border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
             <p class="font-body text-[16px] leading-26 text-text-light">Geprüft wurde auf vier Dinge: korrekte Fakten, korrekte Details, sauberes Abweisen einer Frage ohne Antwort im Dokument, und deutsches Vorlesen per Web Speech API.</p>
           </div>
         </div>
-
-        <!-- Ergebnisse -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">ERGEBNISSE</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Was der Test zeigte</h3>
-          </div>
-          <div class="flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-16 pb-1 [&>*]:w-[80%] [&>*]:shrink-0 [&>*]:snap-start md:overflow-visible md:pb-0 md:gap-24 md:[&>*]:min-w-0 md:[&>*]:w-auto md:[&>*]:shrink">
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">FAKTENFRAGE</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Korrekt beantwortet</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Direkte Fakten aus dem Dokument wurden präzise wiedergegeben.</p>
-            </div>
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">DETAILFRAGE</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Korrekt beantwortet</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Auch speziellere Detailfragen fanden die richtige Stelle im Text.</p>
-            </div>
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">HALLUZINATION</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Sauber abgewehrt</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Auf eine Frage ohne Antwort im Dokument sagte das Modell das offen – statt zu raten.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Betrieb -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">BETRIEB</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Deployment & Kostenschutz</h3>
-          </div>
-          <div class="flex flex-col md:flex-row gap-16 md:gap-24">
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">RENDER</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Web Service</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Laufender Server mit serverseitigem Key. Free-Tier schläft nach ~15 Min – Kaltstart 30–60 s, PDF danach neu laden.</p>
-            </div>
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">KOSTEN</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Hartes Limit</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">OpenAI Auto-Recharge aus – die öffentliche Demo kann keine unbegrenzten Kosten verursachen.</p>
-            </div>
-          </div>
-        </div>
       </section>
 
-      <!-- 05 Ergebnis -->
-      <section id="ergebnis" class="flex flex-col gap-64 border-t border-border pt-64">
-
-        <!-- H2 section number heading -->
-        <h2 class="font-heading font-semibold text-[26px] md:text-[32px] text-text-900 tracking-[-0.52px] md:tracking-[-0.64px]"><span class="text-primary-600">05</span> Ergebnis</h2>
+      <!-- 05 Details -->
+      <section id="details" class="flex flex-col gap-64 border-t border-border pt-64">
+        <SectionEyebrow number="05" label="Details" title="Zusammenfassung und Projektdetails zum nachschauen" />
 
         <!-- Result Card -->
         <div class="border border-border rounded-lg p-24 md:p-48 flex flex-col gap-32 md:gap-40">
@@ -421,32 +247,12 @@ import personaLea from '../../assets/images/persona_Lea.png';
               <p class="font-body text-[16px] leading-26 text-text-light">PDF hochladen, befragen, vorlesen. End-to-End getestet, deployt, mit einer Architektur, die für RAG vorbereitet ist. Das System antwortet nur auf Basis des Dokuments – und sagt ehrlich, wenn etwas fehlt.</p>
             </div>
           </div>
-          <div class="flex gap-32 items-center flex-wrap">
+          <div class="flex gap-16 md:gap-32 items-center flex-wrap">
             <Button label="Live Demo ansehen" href="https://ai-pdf-reader-q2qy.onrender.com" variant="primary" />
+            <Button label="Projekt Details ansehen" href="#" variant="secondary" />
             <Button label="GitHub Repository" href="https://github.com/PixelNinja0/ai-pdf-reader" variant="secondary" />
           </div>
         </div>
-
-        <!-- Learnings -->
-        <div class="flex flex-col gap-32">
-          <div class="flex flex-col gap-8 md:gap-16">
-            <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">LEARNINGS</span>
-            <h3 class="font-heading font-medium text-[22px] md:text-[28px] text-text-900 leading-snug tracking-[-0.28px]">Was ich aus dem Projekt mitnehme</h3>
-          </div>
-          <div class="flex flex-col md:flex-row gap-16 md:gap-24">
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">01</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Eine gute Naht schlägt ein fertiges Feature</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Die context.py-Schnittstelle erlaubt den Sprung zu echtem RAG, ohne die App umzubauen. Den Erweiterungspunkt früh und sauber zu setzen war wertvoller, als RAG sofort hinzustellen.</p>
-            </div>
-            <div class="flex-1 border border-border rounded-lg p-24 md:p-32 flex flex-col gap-16">
-              <span class="font-body font-medium text-[11px] md:text-[12px] text-text-light">02</span>
-              <p class="font-heading font-semibold text-[18px] md:text-[26px] text-text-900 leading-snug tracking-normal">Barrierefreiheit gehört ins Fundament</p>
-              <p class="font-body text-[16px] leading-26 text-text-light">Von der blinden Nutzung her zu denken hat Semantik, Fokus und Ansagen von Anfang an geformt. Nachträglich wäre das nie so konsistent geworden.</p>
-            </div>
-          </div>
-        </div>
-
       </section>
 
     </main>
@@ -488,5 +294,33 @@ import personaLea from '../../assets/images/persona_Lea.png';
       sections.forEach((s) => observer.observe(s));
       setSideActive('ueberblick');
     }
+
+    // Picture Slider
+    const track = document.getElementById('slider-track') as HTMLElement | null;
+    const dots = document.querySelectorAll<HTMLButtonElement>('.slider-dot');
+    const total = dots.length;
+    let current = 0;
+
+    function goTo(index: number) {
+      current = (index + total) % total;
+      if (track) track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('bg-text-900', i === current);
+        dot.classList.toggle('bg-border', i !== current);
+      });
+    }
+
+    document.getElementById('slider-prev')?.addEventListener('click', () => goTo(current - 1));
+    document.getElementById('slider-next')?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+    // Touch swipe
+    let touchStartX = 0;
+    const sliderEl = document.getElementById('slider');
+    sliderEl?.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    sliderEl?.addEventListener('touchend', (e) => {
+      const delta = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(delta) > 40) goTo(delta > 0 ? current + 1 : current - 1);
+    });
   </script>
 </Layout>
